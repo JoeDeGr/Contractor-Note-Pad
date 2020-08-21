@@ -6,28 +6,48 @@ Notes:
         password
 
     2) Create Notepad class
-        Note pad will have items
+        Note pad will have tasks, tasks can have items
         total hours
         total materials cost
         completed?
     
-    3) Create list Class
+    3) Create task class
+        Name
+        Location
         Items can be checked and completed.
         Items will have:
             date created
             date completed
             materials list
                 materials 
-                    material cost 
-                    materials cost total 
+                    item description 
+                    item costs 
+                materials cost total 
             hours list
                 hours 
-                    hours with date
+                    description
+                        hours
+                        date
                     hours total
             
 
-    4) Create Items Class
+    4) Create task_items Class
+        Name
+        Location
         Items can be checked and completed.
-        Items will have date completed, material cost and hours.
+        Items will have:
+            date created
+            date completed
+            materials list
+                materials 
+                    item description 
+                    item costs 
+                materials cost total 
+            hours list
+                hours 
+                    description
+                        hours
+                        date
+                    hours total
         
     5) items can be shared with authorized users.
