@@ -1,53 +1,44 @@
 Notes:
     1) Create Contractor Class
-        User?
+        #User?
         Name
         email
         password
 
     2) Create Notepad class
-        Note pad will have tasks, tasks can have items
-        total hours
+        Note pad will have jobs, jobs can have tasks
+        total hours completed
         total materials cost
         completed?
     
-    3) Create task class
+    3) Create jobs class
         Name
         Location
-        Items can be checked and completed.
-        Items will have:
-            date created
-            date completed
-            materials list
-                materials 
-                    item description 
-                    item costs 
-                materials cost total 
-            hours list
-                hours 
-                    description
-                        hours
-                        date
-                    hours total
+        Items  
+        materials cost total 
+        hours total
+        Completed?
+            date_completed
+        Date_created
             
 
-    4) Create task_items Class
+    4) Create tasks Class
         Name
         Location
-        Items can be checked and completed.
-        Items will have:
-            date created
+        completed?
             date completed
-            materials list
-                materials 
-                    item description 
-                    item costs 
-                materials cost total 
-            hours list
-                hours 
-                    description
-                        hours
-                        date
-                    hours total
+        date created
+        materials list
+            materials 
+                item description 
+                item costs 
+            materials cost total 
+        hours list
+            hours 
+                description
+                    completed_by
+                    hours
+                    date
+                hours total
         
     5) items can be shared with authorized users.
