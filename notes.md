@@ -10,6 +10,9 @@ Notes:
         total hours completed
         total materials cost
         completed?
+        authorized_user_ids
+            authorized_by
+            date/time
     
     3) Create jobs class
         Name
@@ -20,6 +23,9 @@ Notes:
         Completed?
             date_completed
         Date_created
+        authorized_user_ids
+            authorized_by
+            date/time
             
 
     4) Create tasks Class
@@ -40,5 +46,8 @@ Notes:
                     hours
                     date
                 hours total
+        authorized_user_ids
+            authorized_by
+            date/time
         
-    5) items can be shared with authorized users.
+    5) jobs/tasks can be shared with authorized users.
