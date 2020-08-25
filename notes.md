@@ -1,12 +1,15 @@
 Notes:
-    1) Create Contractor Class
+    1) Create Contractor/User Class
         #User?
         Name
         email
         password
+        has_many:NotePads
 
-    2) Create Notepad class
-        Note pad will have jobs, jobs can have tasks
+    2) Create Project class
+        has_many :phases
+        belongs_to :User
+        has_many :tasks, through: :phases
         total hours completed
         total materials cost
         completed?
@@ -14,7 +17,9 @@ Notes:
             authorized_by
             date/time
     
-    3) Create jobs class
+    3) Create Phase class
+        has_many :tasks
+        belongs_to :project
         Name
         Location
         Items  
@@ -28,7 +33,9 @@ Notes:
             date/time
             
 
-    4) Create tasks Class
+    4) Create Task Class
+        belongs_to :phase
+        has_many :materials
         Name
         Location
         completed?
@@ -48,6 +55,6 @@ Notes:
                 hours total
         authorized_user_ids
             authorized_by
-            date/time
+            date/time 
         
     5) jobs/tasks can be shared with authorized users.
