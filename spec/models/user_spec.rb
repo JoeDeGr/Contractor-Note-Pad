@@ -25,8 +25,10 @@ RSpec.describe User, type: :model do
     expect(page).to have_content("Dirk Diggity's Note Pad")
   end
 
-  it "has a button to create a new Note Pad" do
-    click_button('Create a New Project')
-    expect(current_path).to eq("/projects/new")
+  it "has a button to create a New Project" do
+    visit("/users/#{user.id}")
+    fill_in("project[name]", :with => "The Diggity Doghouse")
+    click_link('Create a New Project')
+    expect(current_path).to eq("/projects/1")
   end
 end

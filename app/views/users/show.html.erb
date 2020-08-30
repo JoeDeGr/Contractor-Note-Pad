@@ -1,3 +1,15 @@
-<h1><%=@user.name%>'s Note Pad<h1>
+<h1><%=@user.name%>'s Note Pad<h1><br>
 
-<div><%= button_to "Create a New Project", projects_new_path %></div>
+<h3> Which project are we working on?</h3>
+
+<% if @user.projects.any? %>
+    <% @user.projects.each do |p| %>
+        <div> <%= link_to p.name, project_path(p) %></div>
+    <% end %>
+    <div>Or, Create a New Project</div>
+<%else%>
+    <div> Create a New Project</div>
+<% end %>
+
+<%= render partial: '/projects/form' %>
+<%# <div><%= link_to "Create a New Project", new_project_path %></div> %>

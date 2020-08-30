@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_190745) do
+ActiveRecord::Schema.define(version: 2020_08_30_184924) do
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.boolean "completed", default: false
+    t.string "date_time_completed"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
