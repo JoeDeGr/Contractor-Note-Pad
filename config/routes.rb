@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   root 'sessions#index'
   get 'sessions/new'
   get 'sessions/create'

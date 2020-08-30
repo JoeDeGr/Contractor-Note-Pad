@@ -17,11 +17,16 @@ RSpec.describe User, type: :model do
 
   it "is a User who can signup" do
     visit"/users/new"
-    fill_in("name", :with => "Dirk Diggity")
-    fill_in("email", :with => "diggity_doggy@dirk.com")
-    fillin_in("password", :with => "password")
+    fill_in("user[name]", :with => "Dirk Diggity")
+    fill_in("user[email]", :with => "diggity_doggy@dirk.com")
+    fill_in("user[password]", :with => "password")
+    fill_in("user[password_confirmation]", :with => "password")
     click_button('Create User')
-    expect(current_path).to be(user_path(user))
+    expect(page).to have_content("Dirk Diggity's Note Pad")
   end
 
+  it "has a button to create a new Note Pad" do
+    click_button('Create a New Project')
+    expect(current_path).to eq("/projects/new")
+  end
 end
