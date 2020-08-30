@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
 class UsersController < ApplicationController
-end
-=======
-class UsersController < ApplicationController
+    def new
+    end
     
 end
->>>>>>> Stashed changes
