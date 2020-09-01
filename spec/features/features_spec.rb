@@ -1,7 +1,20 @@
-require 'rails_helper'
+require_relative "../rails_helper.rb"
 
 RSpec.feature "Feature Test", type: :feature do
   # pending "add some scenarios (or delete) #{__FILE__}"
+  before(:all) do
+    @user = User.create(
+      :name => "Jimmy Bones",
+      :email => "Jimmy@bones.com",
+      :password => "Jimmy",
+      :password_confirmation => "Jimmy",
+    )
+
+    @project = Project.create(
+      :name => "Jimmy's Jam",
+      :user_id => @user.id
+    )
+  end
   it "has a login page" do
     visit "/"
     expect(page).to have_content("Welcome!")
@@ -14,5 +27,25 @@ RSpec.feature "Feature Test", type: :feature do
     visit "/"
     click_link("Log In")
     expect(current_path).to eq('/sessions/new')
+  end
+
+  it "sucessfully creates a user" do
+    visit '/users/new'
+    expect(current_path).to eq('/users/new')
+    # user_signup
+    fill_in("user[name]", :with => "Joey Bagalodonuts")
+    fill_in("user[email]", :with => "Joey@bagalodon.com")
+    fill_in("user[password]", :with => "Joey")
+    fill_in("user[password_confirmation]", :with => "Joey")
+    click_button('Create User')
+    expect(current_path).to eq('/users/2')
+    expect(page).to have_content("Joey Bagalodon")
+  end
+
+  it "Project show page shows Project name" do
+    visit("/users/#{@user.id}")
+    fill_in("project[name]", :with => "New Project")
+    click_button('Create a New Project')
+    expect(page).to have_content("New Project")
   end
 end
