@@ -1,5 +1,5 @@
 <%= form_tag projects_path do %>
 <div> Name: <%= text_field_tag "project[name]" %>
-<%= hidden_field_tag "project[user_id]", current_user.id %>
+<%= hidden_field_tag "project[user_id]", @user.id %>
 <%= submit_tag "Create a New Project"%>
 <% end %>

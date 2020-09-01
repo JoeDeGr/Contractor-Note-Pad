@@ -5,7 +5,6 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
-        @project.user_id = session[:user_id]
         binding.pry
         
         if @project.valid?
@@ -13,13 +12,13 @@ class ProjectsController < ApplicationController
             @project.save
             redirect_to project_path(@project)
         else
-            render new
+            render "new"
         end
     end
 
     private
 
     def project_params
-        params.require(:project).permit(:name)
+        params.require(:project).permit(:name, :user_id)
     end
 end
