@@ -1,3 +1,14 @@
 <h1><%= @project.name %></h1>
 
+<ul>
+    <% if @project.punch_lists %>
+        <% @project.punch_lists.each do |list|%>
+            <li><%= link_to "list.name", list_path(list)%></li>
+        <% end %>
+    <% else %>
+        <H3>You dont have any Punch Lists for this Project yet!</h3>
+    <% end %>
+    <li> <%= render partial: '/punch_lists/form' %></li>    
+</ul>
+
 <div><%= link_to "Home Page", user_path(@project.user_id)%>
