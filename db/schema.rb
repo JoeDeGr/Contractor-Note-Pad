@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_184924) do
+ActiveRecord::Schema.define(version: 2020_09_03_135623) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.boolean "completed", default: false
     t.string "date_time_completed"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "punch_lists", force: :cascade do |t|
+    t.string "name"
+    t.string "date_time_completed"
+    t.boolean "completed", default: false
+    t.string "materials"
+    t.string "hours_to_complete"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

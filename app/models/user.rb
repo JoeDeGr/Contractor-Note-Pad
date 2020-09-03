@@ -10,5 +10,6 @@ class User < ApplicationRecord
     # validates :password_confirmation, presence: true
 
     has_many :projects
+    has_many :punch_lists, through: :projects
 
 end
