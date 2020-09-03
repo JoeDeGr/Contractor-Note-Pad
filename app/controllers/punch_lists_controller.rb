@@ -1,0 +1,2 @@
+class PunchListsController < ApplicationController
+end

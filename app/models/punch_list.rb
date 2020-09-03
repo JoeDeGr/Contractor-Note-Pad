@@ -1,0 +1,3 @@
+class PunchList < ApplicationRecord
+    
+end

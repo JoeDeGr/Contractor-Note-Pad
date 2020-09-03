@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_time_completed: MyString
+  completed: false
+  materials: MyString
+  hours_to_complete: MyString
+
+two:
+  name: MyString
+  date_time_completed: MyString
+  completed: false
+  materials: MyString
+  hours_to_complete: MyString

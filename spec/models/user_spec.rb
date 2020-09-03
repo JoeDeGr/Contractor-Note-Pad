@@ -42,6 +42,4 @@ RSpec.describe User, type: :model do
     expect(page).to have_content(user.name)
     expect(page).to have_content("The Diggity Doghouse")
   end
-
-
 end

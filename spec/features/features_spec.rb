@@ -48,4 +48,15 @@ RSpec.feature "Feature Test", type: :feature do
     click_button('Create a New Project')
     expect(page).to have_content("New Project")
   end
+
+  it "has a link to the users projects on the users show page" do
+    visit("/users/#{@user.id}")
+    click_link("#{@project.name}")
+    expect(current_path).to eq("/projects/#{@project.id}")
+  end
+
+  it "shows the Projects PunchList items on the /projects/show page" do
+    visit("/projects/#{@project.id}")
+    expect(page).to include(@project.punch_lists.first.name)
+  end
 end
