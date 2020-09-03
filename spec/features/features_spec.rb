@@ -14,6 +14,11 @@ RSpec.feature "Feature Test", type: :feature do
       :name => "Jimmy's Jam",
       :user_id => @user.id
     )
+
+    @punch_list =PunchList.create(
+      :name => "#{@project.name}'s New Punch List",
+      :project_id => @project.id
+    )
   end
   it "has a login page" do
     visit "/"
@@ -57,6 +62,6 @@ RSpec.feature "Feature Test", type: :feature do
 
   it "shows the Projects PunchList items on the /projects/show page" do
     visit("/projects/#{@project.id}")
-    expect(page).to include(@project.punch_lists.first.name)
+    expect(page).to have_content("#{@project.punch_lists.first.name}")
   end
 end
