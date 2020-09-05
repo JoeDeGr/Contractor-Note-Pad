@@ -11,6 +11,7 @@ class PunchListsController < ApplicationController
             redirect_to punch_list_path(@punch_list)
         else
             # render 'projects/#{@project.id}'
+            render 'new'
         end
     end
 
