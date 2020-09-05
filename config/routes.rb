@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :punch_lists
   resources :projects
   root 'sessions#index'

@@ -16,10 +16,16 @@ RSpec.feature "Feature Test", type: :feature do
     )
 
     @punch_list =PunchList.create(
-      :name => "#{@project.name}'s New Punch List",
+      :name => "#{@project.name}'s new Punch List",
       :project_id => @project.id
     )
+
+    @task = Task.create(
+      :name => "#{@punch_list}'s new Task",
+      :punch_list_id => @punch_list.id
+    )
   end
+  
   it "has a login page" do
     visit "/"
     expect(page).to have_content("Welcome!")
@@ -60,8 +66,18 @@ RSpec.feature "Feature Test", type: :feature do
     expect(current_path).to eq("/projects/#{@project.id}")
   end
 
-  it "shows the Projects PunchList items on the /projects/show page" do
+  it "shows the Projects PunchList items on the /projects/show page as a functioning link" do
     visit("/projects/#{@project.id}")
     expect(page).to have_content("#{@project.punch_lists.first.name}")
+    click_link(@punch_list.name)
+    expect(current_path).to eq("/punch_lists/#{@punch_list.id}")
   end
+
+  it "shows a Punch Lists Tasks" do
+    visit("/punch_lists/#{@punch_list.id}")
+    expect(page).to have_content("#{@user.name}")
+    expect(page).to have_content("#{@project.name}")
+    expect(page).to have_content("#{@punch_list.name}")
+    expect(page).to have_content("#{@punch_list.tasks.first.name}")
+end
 end

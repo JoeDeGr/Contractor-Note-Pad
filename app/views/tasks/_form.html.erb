@@ -1,0 +1,5 @@
+<%= form_tag tasks_path do %>
+<div> Name: <%= text_field_tag "task[name]" %></div><br>
+<%= hidden_field_tag "task[punch_list_id]", @punch_list.id %>
+<%= submit_tag "Create a New Task"%>
+<% end %>
