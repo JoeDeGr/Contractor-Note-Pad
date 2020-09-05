@@ -4,7 +4,7 @@
 <ul>
     <%if @punch_list.tasks.any? %>
         <% @punch_list.tasks.each do |t| %>
-            <li><%= link_to "t.name", task_path(t) %></li>
+            <li><%= link_to "#{t.name}", task_path(t) %></li>
         <% end %>
     <% else %>
         <p> Hey, It looks like this list is empty! </p>
@@ -12,3 +12,5 @@
     
     <li><%= render partial: "/tasks/form" %></li>
 </ul>
+
+<%= link_to "#{@project.name}", project_path(@project) %>

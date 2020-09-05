@@ -4,7 +4,6 @@ class PunchListsController < ApplicationController
 
     def create
         @punch_list = PunchList.new(punch_list_params)
-        binding.pry
         @project = Project.find(params[:punch_list][:project_id])
         if @punch_list.valid?
             @punch_list.save

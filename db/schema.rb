@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_142222) do
+ActiveRecord::Schema.define(version: 2020_09_05_154045) do
+
+  create_table "materials", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "price"
+    t.string "date"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -34,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_142222) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.boolean "completed", default: false
     t.string "date_completed"
     t.string "hours_to_complete"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :materials
   resources :tasks
   resources :punch_lists
   resources :projects

@@ -22,10 +22,11 @@ RSpec.feature "Feature Test", type: :feature do
 
     @task = Task.create(
       :name => "#{@punch_list}'s new Task",
-      :punch_list_id => @punch_list.id
+      :punch_list_id => @punch_list.id,
+      :description => "It's super cool that we can have a super cool description for this task!"
     )
   end
-  
+
   it "has a login page" do
     visit "/"
     expect(page).to have_content("Welcome!")
@@ -80,4 +81,14 @@ RSpec.feature "Feature Test", type: :feature do
     expect(page).to have_content("#{@punch_list.name}")
     expect(page).to have_content("#{@punch_list.tasks.first.name}")
 end
+
+  it "has a Task Page that shows the user, project, punch list, materials, workers, and hours"
+    visit("tasks/#{@task.id}")
+    expect(page).to have_content("#{@user.name}")
+    expect(page).to have_content("#{@project.name}")
+    expect(page).to have_content("#{@punch_list.name}")
+    expect(page).to have_content("#{@task.name}")
+    expect(page).to have_content("#{@material.name}")
+    expect(page).to have_content("#{@worker.name}")
+    expect(page).to have_content("#{@task.description}")
 end
