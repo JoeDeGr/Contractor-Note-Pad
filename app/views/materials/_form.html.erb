@@ -1,0 +1,8 @@
+<%= form_tag material_path do %>
+<%= hidden_field_tag "material[task_id]", @task.id %>
+<div>Name: <%= text_field_tag "material[name]" %><div><br>
+<div>Description: <%= text_area_tag "material[description]", 'Enter desciption here' %></div><br>
+<div>Price: <%= text_field_tag "material[price]"%></div><br>
+<div>Date Purchased <%= text_field_tag "material[date]", Time.now %></div><br>
+<%= submit_tag "Add Materials to this Task" %>
+<% end %>

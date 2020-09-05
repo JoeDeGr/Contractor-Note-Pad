@@ -4,4 +4,5 @@ class Project < ApplicationRecord
     belongs_to :user
     has_many :punch_lists
     has_many :tasks, through: :punch_lists
+    has_many :materials, through: :tasks
 end
