@@ -83,6 +83,7 @@ RSpec.feature "Feature Test", type: :feature do
 end
 
   it "has a Task Page that shows the user, project, punch list, materials, workers, and hours"
+    binding.pry
     visit("tasks/#{@task.id}")
     expect(page).to have_content("#{@user.name}")
     expect(page).to have_content("#{@project.name}")
