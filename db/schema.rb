@@ -10,55 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_154045) do
-
-  create_table "materials", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "price"
-    t.string "date"
-    t.integer "task_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.boolean "completed", default: false
-    t.string "date_time_completed"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "punch_lists", force: :cascade do |t|
-    t.string "name"
-    t.string "date_time_completed"
-    t.boolean "completed", default: false
-    t.string "materials"
-    t.string "hours_to_complete"
-    t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.boolean "completed", default: false
-    t.string "date_completed"
-    t.string "hours_to_complete"
-    t.integer "punch_list_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
