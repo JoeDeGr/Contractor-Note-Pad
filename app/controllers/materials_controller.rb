@@ -5,6 +5,8 @@ class MaterialsController < ApplicationController
     
     def create
         @material = Material.new(material_params)
+        @material.price = @material.material_price_parse
+        binding.pry
         @task = Task.find(@material.task_id)
         if @material.valid?
             @material.save
@@ -30,4 +32,9 @@ class MaterialsController < ApplicationController
     def material_params
         params.require(:material).permit(:name, :description, :price, :date, :task_id)
     end
+
+    def material_price_params
+        params.require(:material).permit(:price)
+    end
+
 end

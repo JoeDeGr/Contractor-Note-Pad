@@ -3,6 +3,7 @@
 <p><%= @task.description %></p>
 <h3>Materials:</h3>
 <ul>
+    <li>Materials total: <%=@task.materials_total%></li>
     <% if @task.materials.any? %>
         <% @task.materials.each do |m| %>
             <li> <%= link_to "#{m.name}", material_path(m) %></li><br>
