@@ -9,6 +9,6 @@ class Task < ApplicationRecord
         self.materials.each do |m|
             total += m.price.to_i
         end
-        "#{total.to_s[0..-3]}.#{total.to_s.last(2)}" 
+        "$#{total.to_s[0..-3]}.#{total.to_s.last(2)}" 
     end
 end

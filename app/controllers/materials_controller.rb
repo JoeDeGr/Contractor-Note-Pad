@@ -6,7 +6,6 @@ class MaterialsController < ApplicationController
     def create
         @material = Material.new(material_params)
         @material.price = @material.material_price_parse
-        binding.pry
         @task = Task.find(@material.task_id)
         if @material.valid?
             @material.save

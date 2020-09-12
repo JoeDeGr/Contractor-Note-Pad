@@ -1,5 +1,5 @@
 <h1><%= @project.name %></h1>
-
+<div>Materials Total for this project: <%=@project.materials_total%></div>
 <ul>
     <% if @project.punch_lists %>
         <% @project.punch_lists.each do |list|%>

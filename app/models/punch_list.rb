@@ -5,4 +5,12 @@ class PunchList < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
     validates :project_id, presence: true
+
+    def materials_total
+        total = 0
+        self.tasks.each do |t|
+            total += t.materials_total.split("$")[1].split(".").join.to_i
+        end
+        "$#{total.to_s[0..-3]}.#{total.to_s.last(2)}" 
+    end
 end

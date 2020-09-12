@@ -1,15 +1,17 @@
 <h2><%= @user.name%><h2>
 <h2> <%= @task.name %> in <%= @punch_list.name %> for <%= @project.name %> </h2>
 <p><%= @task.description %></p>
+
 <h3>Materials:</h3>
-<ul>
-    <li>Materials total: <%=@task.materials_total%></li>
+
+<div>Materials Total for this Task: <%=@task.materials_total%></div>
+    <ul>
     <% if @task.materials.any? %>
         <% @task.materials.each do |m| %>
             <li> <%= link_to "#{m.name}", material_path(m) %></li><br>
             <ul>
                 <li><%= m.description %></li><br>
-                <li><%= m.price %></li><br>
+                <li><%= m.price_return %></li><br>
                 <li><%= m.date %>
             </ul>
         <% end %>
