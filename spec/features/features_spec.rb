@@ -32,7 +32,14 @@ RSpec.feature "Feature Test", type: :feature do
       :price => "100.01",
       :task_id => @task.id,
       :date => Time.now
-    ) 
+    )
+
+    @worker = Worker.create(
+      :name => "John Doeslittle",
+      :user_id => @user.id
+    )
+    @worker.tasks << @task
+    @worker.save
   end
 
   it "has a login page" do

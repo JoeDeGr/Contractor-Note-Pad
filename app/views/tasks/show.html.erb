@@ -23,5 +23,14 @@
 
 
 <h3>Workers:</h3>
+<ul>
+    <% if @task.workers.any? %>
+        <%@task.workers.each do |w|%>
+        <li><%= link_to "#{w.name}", w %></li>
+        <%end%>
+    <% else %>
+        <li><em>There are no Workeres Assigned to this task.</em></li>
+    <% end %>
+</ul>
 
 <%= link_to "#{@punch_list.name}", punch_list_path(@punch_list) %>
