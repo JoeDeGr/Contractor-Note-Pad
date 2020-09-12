@@ -8,15 +8,16 @@
             <li> <%= link_to "#{m.name}", material_path(m) %></li><br>
             <ul>
                 <li><%= m.description %></li><br>
-                <li><%= m.price %></li><br><br>
+                <li><%= m.price %></li><br>
                 <li><%= m.date %>
             </ul>
         <% end %>
     <% else %>
         <p> You do not have any materials for this task. <p>
     <% end %>
-    <h4> <%= render partial: "/materials/form" %></h4>
 </ul>
+<h4> <%= render partial: "/materials/form" %></h4>
+
 
 <h3>Workers:</h3>
 
