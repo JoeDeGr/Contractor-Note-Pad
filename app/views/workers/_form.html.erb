@@ -1,0 +1,5 @@
+<%= form_tag workers_path do %>
+    <div> Name: <%= text_field_tag "worker[name]" %></div>
+    <%= hidden_field_tag "worker[user_id]", @user.id %>
+    <%= submit_tag "Create a New Worker"%>
+<% end %>

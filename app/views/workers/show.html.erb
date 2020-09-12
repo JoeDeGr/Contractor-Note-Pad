@@ -1,0 +1,13 @@
+<h2> <%= @worker.name %> </h2>
+
+<h3> Tasks assigned to this worker: </h3>
+<ul>
+    <% if @worker.tasks.any? %>
+        <% @worker.tasks.each do |t| %>
+        <li> <%= link_to "#{t.name}", t %></li>
+        <% end %>
+    <% else %>
+        <li> This worler does't have any work! </li>
+    <% end %>
+<ul>
+

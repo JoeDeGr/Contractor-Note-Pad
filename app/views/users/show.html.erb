@@ -11,5 +11,17 @@
     <div> Create a New Project</div>
 <% end %>
 
-<%= render partial: '/projects/form' %>
-<%# <div><%= link_to "Create a New Project", new_project_path %></div>
+<%= render partial: '/projects/form' %><br>
+
+<h3>Workers:</h3>
+<ul> 
+    <% if @user.workers.any? %>
+        <% @user.workers.each do |w| %>
+            <li> <%= link_to "#{w.name}", w %> </li><br>
+        <% end %>
+    <% else %>
+        <li>You do not have any workers </li>
+    <% end %>
+
+    <%= render partial: '/workers/form' %>
+</ul>
