@@ -12,11 +12,11 @@
 @worker = Worker.create(name: "Bob", user_id: @user.id)
 
 @user2 = User.create(name: "Joe", email: "Joe@Joe.com", password: "password")
-@project2 = Project.create(name: "Joes Big Deal", user: @user2)
+@project2 = Project.create(name: "Bobs Big Deal", user: @user2)
 @punchlist2 = PunchList.create(name: "Joes List", project: @project2)
 
 @task2 = Task.create(name: "Do this thing", punch_list: @punchlist2, description: "Go to this place, and do the things and stuff.")
-@task3 = Task.create(name: "This Needs Doing", punch_list: @punchlist2, description: "Go to the nect place and do the things.")
+@task3 = Task.create(name: "This Needs Doing", punch_list: @punchlist2, description: "Go to the next place and do the things.")
 @task4 = Task.create(name: "DON'T FORGET THIS!", punch_list: @punchlist2, description: "DON'T FORGET TO PICK UP THE MILK AND EGGS!")
 
 @worker2 = Worker.create(name: "Jim", user_id: @user2.id)
@@ -38,11 +38,11 @@
 @worker4.tasks << @task4
 @worker4.save
 
-@materials = Material.create(name: "Things", price: "$101.76", date: Time.now, description: "Things for the stuff.", task_id: 1)
-@materials2 = Material.create(name: "More things", price: "$241.41", date: Time.now, description: "for the stuff.", task_id: 2)
-@materials3 = Material.create(name: "Other things.", price: "$1976", date: Time.now, description: "windows.", task_id: 3)
-@materials4 = Material.create(name: "OOOO... These things.", price: "$.43", date: Time.now, description: "the blue one.", task_id: 1)
-@materials5 = Material.create(name: "Some things for the stuff", price: "$100.", date: Time.now, description: "I found this at a tag sale.", task_id: 4)
-@materials6 = Material.create(name: "Shoes.", price: "$22020.", date: Time.now, description: "SHOES!.", task_id: 1)
+@materials = Material.create(name: "Things", price: "10176", date: Time.now, description: "Things for the stuff.", task_id: 1)
+@materials2 = Material.create(name: "More things", price: "24141", date: Time.now, description: "for the stuff.", task_id: 2)
+@materials3 = Material.create(name: "Other things.", price: "1976", date: Time.now, description: "windows.", task_id: 3)
+@materials4 = Material.create(name: "OOOO... These things.", price: "43", date: Time.now, description: "the blue one.", task_id: 1)
+@materials5 = Material.create(name: "Some things for the stuff", price: "100", date: Time.now, description: "I found this at a tag sale.", task_id: 4)
+@materials6 = Material.create(name: "Shoes.", price: "2202", date: Time.now, description: "SHOES!.", task_id: 1)
 
 

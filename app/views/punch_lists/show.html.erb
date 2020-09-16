@@ -14,4 +14,16 @@
     <li><%= render partial: "/tasks/form" %></li>
 </ul>
 
+<div>Workers assinged to this Punch_list</div>
+
+<ul>
+    <% if @punch_list.workers.any? %>
+        <% @punch_list.workers.each do |w| %>
+        <li><%= link_to w.name, w %></li>
+        <% end %>
+    <% else %>
+        <p> There aren't any workers assigned to this task. <p>
+    <% end %>
+</ul>
+
 <%= link_to "#{@project.name}", project_path(@project) %>
