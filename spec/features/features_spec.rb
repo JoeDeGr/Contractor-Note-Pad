@@ -106,6 +106,25 @@ end
     expect(page).to have_content("#{@task.description}")
     expect(page).to have_content("#{@material.name}")
     expect(page).to have_content("#{@worker.name}")
-    
+  end
+
+  it "shows aggrigated materials on the punch_List show page" do
+    visit("/punch_lists/#{@punch_list.id}")
+    expect(page).to have_content(@punch_list.materials_total)
+  end 
+
+  it "shows aggrigated materials on the project show page" do
+    visit("/projects/#{@project.id}")
+    expect(page).to have_content(@project.materials_total)
+  end
+
+  it "allows the user to build a worker" do
+    visit("/users/#{@user.id}")
+    # click_link("Create a New Worker")
+    fill_in("worker[name]", :with => "Georgy Dosumtin")
+    click_button("Create a New Worker")
+    expect(current_path).to eq("/workers/#{Worker.last.id}")
+    click_link("Home Page")
+    expect(page).to have_content("Georgy Dosumtin")
   end
 end
