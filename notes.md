@@ -4,22 +4,31 @@ Notes:
         Name
         email
         password
-        has_many:NotePads
+            has_many :projects
+            has_many :punch_lists, through: :projects
+            has_many :tasks, through: :punch_lists
+            has_many :workers
+
+        creates Workers
+        
 
     2) Create Project class
-        has_many :phases
-        belongs_to :User
-        has_many :tasks, through: :phases
+            belongs_to :user
+            has_many :punch_lists
+            has_many :tasks, through: :punch_lists
+            has_many :materials, through: :tasks
         total hours completed
         total materials cost
         completed?
-        authorized_user_ids
-            authorized_by
-            date/time
+            Wants:
+                <!-- authorized_user_ids
+                authorized_by
+                date/time -->
     
-    3) Create Phase class
-        has_many :tasks
-        belongs_to :project
+    3) Create PunchList class
+            belongs_to :project
+            has_many :tasks
+            has_many :materials, through: :tasks
         Name
         Location
         Items  
@@ -28,14 +37,18 @@ Notes:
         Completed?
             date_completed
         Date_created
-        authorized_user_ids
+        Wants: 
+            authorized_user_ids
             authorized_by
             date/time
             
 
     4) Create Task Class
-        belongs_to :phase
+        belongs_to :punch_list
         has_many :materials
+        has_many :worker_tasks
+        has_many :workers, through: :worker_tasks
+
         Name
         Location
         completed?
@@ -57,4 +70,8 @@ Notes:
             authorized_by
             date/time 
         
-    5) jobs/tasks can be shared with authorized users.
+    5) Materials and workers... 
+        Materials belog to a Task
+        Workers belong to a User and have many tasks. Tasks have many workers. 
+    
+    6) Jobs/tasks can be shared with authorized users.
