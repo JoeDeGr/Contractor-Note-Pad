@@ -29,7 +29,7 @@ RSpec.feature "Feature Test", type: :feature do
     @material = Material.create(
       :name => "#{@task}'s new Material",
       :description => "Thes Materials sweet description",
-      :price => "100.01",
+      :price => "10001",
       :task_id => @task.id,
       :date => Time.now
     )

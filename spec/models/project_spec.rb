@@ -18,6 +18,4 @@ RSpec.describe Project, type: :model do
   it "belongs to one User" do
     expect(project.user).to eq(user)
   end
-
-
 end
