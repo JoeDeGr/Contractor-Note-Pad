@@ -18,7 +18,7 @@
 
 <ul>
     <% if @punch_list.workers.any? %>
-        <% @punch_list.workers.each do |w| %>
+        <% @workers.each do |w| %>
         <li><%= link_to w.name, w %></li>
         <% end %>
     <% else %>
