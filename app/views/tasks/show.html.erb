@@ -22,7 +22,7 @@
 <h4> <%= render partial: "/materials/form" %></h4>
 
 
-<h3>Workers:</h3>
+<h3>Workers Assigned to this Task:</h3>
 <ul>
     <% if @task.workers.any? %>
         <%@task.workers.each do |w|%>
