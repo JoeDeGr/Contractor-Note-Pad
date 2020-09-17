@@ -8,7 +8,7 @@
             <li><%= link_to "#{t.name}", task_path(t) %></li>
             <ul>
                 <li> Total Task Materials So Far: <%= t.materials_total%> </li>
-                <li> Workers assigned to this task: <% t.workers_list %> <li>
+                <li> Workers assigned to this task: <%= t.workers_list %> <li>
             </ul>
         <% end %>
     <% else %>
