@@ -14,4 +14,16 @@ class PunchList < ApplicationRecord
         end
         "$#{total.to_s[0..-3]}.#{total.to_s.last(2)}" 
     end
+
+    def uniq_workers
+        self.workers.uniq
+    end
+
+    def workers_list
+        workers = []
+        self.uniq_workers.each do |worker|
+            workers << worker.name
+        end
+        workers.join(", ")
+    end
 end

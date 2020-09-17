@@ -6,6 +6,10 @@
     <%if @punch_list.tasks.any? %>
         <% @punch_list.tasks.each do |t| %>
             <li><%= link_to "#{t.name}", task_path(t) %></li>
+            <ul>
+                <li> Total Task Materials So Far: <%= t.materials_total%> </li>
+                <li> Workers assigned to this task: <% t.workers_list %> <li>
+            </ul>
         <% end %>
     <% else %>
         <p> Hey, It looks like this list is empty! </p>

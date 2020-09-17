@@ -127,4 +127,18 @@ end
     click_link("Home Page")
     expect(page).to have_content("Georgy Dosumtin")
   end
+
+  it "shows the Workers, Project Materials total and PunchList Total Materials cost on the Project Show Page " do
+    visit("/projects/#{@project.id}")
+    expect(page).to have_content(@project.materials_total)
+    expect(page).to have_content(@punch_list.workers.first.name)
+    expect(page).to have_content(@punch_list.materials_total)
+  end
+
+  it "shows The PunchList total materials, workers for each Task, and Task Materials Total on PunchList Show Page" do
+    visit("/punch_lists/#{@punch_list.id}")
+    expect(page).to have_content(@punch_list.materials_total)
+    expect(page).to have_content(@task.materials_total)
+    expect(page).to have_content(@task.workers_list)
+  end
 end

@@ -16,7 +16,7 @@ class PunchListsController < ApplicationController
 
     def show
         @punch_list = PunchList.find(params[:id])
-        @workers = @punch_list.workers.uniq
+        @workers = @punch_list.uniq_workers
         @project = Project.find(@punch_list.project_id)
         @user = User.find(@project.user_id)
     end
