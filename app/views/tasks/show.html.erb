@@ -31,6 +31,7 @@
     <% else %>
         <li><em>There are no Workeres Assigned to this task.</em></li>
     <% end %>
+    <%= render partial: "/tasks/add_workers_to_task" %>
 </ul>
 
 <%= link_to "#{@punch_list.name}", punch_list_path(@punch_list) %>

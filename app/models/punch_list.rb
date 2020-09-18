@@ -4,7 +4,7 @@ class PunchList < ApplicationRecord
     has_many :materials, through: :tasks
     has_many :workers, through: :tasks
     validates :name, presence: true
-    validates :name, uniqueness: true
+    # validates :name, uniqueness: true
     validates :project_id, presence: true
 
     def materials_total

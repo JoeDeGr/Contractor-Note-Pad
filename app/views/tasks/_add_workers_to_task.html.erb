@@ -1,0 +1,4 @@
+<%= form_for @task do |f| %>
+<%= f.collection_select :workers, Worker.all, :id, :name, include_blank: true %>
+<% f.submit %>
+<% end %>

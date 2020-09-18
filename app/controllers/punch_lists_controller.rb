@@ -9,6 +9,7 @@ class PunchListsController < ApplicationController
             @punch_list.save
             redirect_to punch_list_path(@punch_list)
         else
+            binding.pry
             # render 'projects/#{@project.id}'
             render 'new'
         end
