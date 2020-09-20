@@ -20,6 +20,15 @@ class TasksController < ApplicationController
         @user = User.find(@project.user_id)
     end
 
+    def update 
+        @task = Task.find(params[:id])
+        @worker = Worker.find(params[:task][:workers])
+        @task.workers << @worker
+        binding.pry
+        @task.save
+        redirect_to task_path(@task)
+    end
+
     private
 
     def task_params
