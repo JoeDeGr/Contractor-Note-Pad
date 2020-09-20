@@ -20,6 +20,13 @@ class TasksController < ApplicationController
         @user = User.find(@project.user_id)
     end
 
+    def edit
+        @task = Task.find(params[:id])
+        @punch_list = PunchList.find(@task.punch_list_id)
+        @project = Project.find(@punch_list.project_id)
+        @user = User.find(@project.user_id)
+    end
+
     def update 
         @task = Task.find(params[:id])
         @worker = Worker.find(params[:task][:workers])
@@ -32,10 +39,6 @@ class TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:name, :punch_list_id)
+        params.require(:task).permit(:name, :punch_list_id, :description)
     end
-
-    # def new_task_punch_list_id
-    #     params.require(:task).permit(:punch_list_id)
-    # end
 end
