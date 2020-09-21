@@ -27,9 +27,20 @@ class WorkersController < ApplicationController
 
     def update
         @worker = Worker.find(params[:id])
-        @worker.update(worker_params)
+        if params[:worker][:tasks]
+            binding.pry
+            @task = Task.find(params[:worker][:tasks])
+            @worker.tasks << @task    
+        else
+            binding.pry
+            @worker.update(worker_params)
+        end
+        redirect_to worker_path(@worker)
     end
 
+    # def "/workers/#{:id}"
+    #     raise params.inspect
+    # end
     private
 
     def worker_params

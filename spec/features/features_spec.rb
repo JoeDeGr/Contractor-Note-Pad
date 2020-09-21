@@ -25,6 +25,11 @@ RSpec.feature "Feature Test", type: :feature do
       :punch_list_id => @punch_list.id,
       :description => "It's super cool that we can have a super cool description for this task!"
     )
+    @task2 = Task.create(
+      :name => "New Task No one has done yet",
+      :punch_list_id => @punch_list.id,
+      :description => "This better get done, the boss is getting pissed"
+    )
 
     @material = Material.create(
       :name => "#{@task}'s new Material",
@@ -140,5 +145,19 @@ end
     expect(page).to have_content(@punch_list.materials_total)
     expect(page).to have_content(@task.materials_total)
     expect(page).to have_content(@task.workers_list)
+  end
+
+  it "allows a user to edit a worker" do
+    visit("/workers/#{@worker.id}/edit")
+    fill_in(worker[:name]), :with => "Changed My Name Boss"
+    click_button(submit)
+    expect(page).to have_content("Changed My Name Boss")
+  end 
+
+  it "allows the worker to have tasks" do
+    visit("/workers/#{@worker.id}")
+    select("#{@task2.name}", from: 'select_box')
+    click_button("Add Task to Worker")
+    expect(page).to have_content("#{@task.name}")
   end
 end
