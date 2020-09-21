@@ -35,7 +35,10 @@
     <% else %>
         <li><em>There are no Workers Assigned to this task.</em></li>
     <% end %>
-    <%= render partial: "/tasks/add_workers_to_task" %>
+    <p><em>Add a worker to this Task:</em></p>
+    <ul>
+        <%= render partial: "/tasks/add_workers_to_task" %>
+    </ul>
 </ul>
 
 <%= link_to "Edit this Task", edit_task_path %><br><br>

@@ -12,8 +12,11 @@
     <% else %>
         <li> This worker does't have any work! </li>
     <% end %>
-</ul><br>
-<%= render partial: '/workers/add_tasks_to_worker'%><br><br>
+    <p><em>Add a Task to this Worker:</em><p>
+    <ul>
+        <%= render partial: '/workers/add_tasks_to_worker'%><br><br>
+    </ul>
+</ul>
 
 <%= link_to "Edit #{@worker.name}", edit_worker_path%><br><br>
 <%= link_to "Home Page", user_path(@user) %>
