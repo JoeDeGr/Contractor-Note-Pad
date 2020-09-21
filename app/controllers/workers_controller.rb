@@ -20,6 +20,16 @@ class WorkersController < ApplicationController
         @user = @worker.user
     end
 
+    def edit
+        @worker = Worker.find(params[:id])
+        @user = @worker.user
+    end
+
+    def update
+        @worker = Worker.find(params[:id])
+        @worker.update(worker_params)
+    end
+
     private
 
     def worker_params
