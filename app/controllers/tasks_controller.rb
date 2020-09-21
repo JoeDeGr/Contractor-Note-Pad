@@ -9,7 +9,7 @@ class TasksController < ApplicationController
             @task.save
             redirect_to task_path(@task)
         else
-            render 'new'
+            render '/tasks/new'
         end
     end
 

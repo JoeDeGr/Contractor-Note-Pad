@@ -1,1 +1,4 @@
-<%= render partial: '/tasks/form'%>
+<%= render partial: '/tasks/form'%><br>
+
+<%= link_to "Return to #{@task.name}", task_path(@task)%><br><br>
+<%= link_to "#{@punch_list.name}", punch_list_path(@punch_list) %>

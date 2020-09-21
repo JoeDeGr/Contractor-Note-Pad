@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+    validates :name, presence: true
     belongs_to :punch_list
     has_many :materials
     has_many :worker_tasks
