@@ -1,3 +1,6 @@
 <h1>Edit Page for <%= @worker.name %>.</h1>
 
-<P><%= render partial: "/workers/form" %></p>
+<P><%= render partial: "/workers/form" %></p><br>
+<%# <p><%= render partial: "/workers/add_tasks_to_worker" %>
+
+<%= link_to "return to #{@worker.name}", worker_path(@worker) %>
