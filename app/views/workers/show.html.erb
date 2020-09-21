@@ -9,6 +9,6 @@
     <% else %>
         <li> This worker does't have any work! </li>
     <% end %>
-<ul>
-
+</ul><br>
+<%= render partial: '/workers/add_tasks_to_workers'%>
 <%= link_to "Home Page", user_path(@user) %>

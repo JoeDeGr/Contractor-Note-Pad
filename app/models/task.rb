@@ -12,6 +12,7 @@ class Task < ApplicationRecord
         end
         "$#{total.to_s[0..-3]}.#{total.to_s.last(2)}" 
     end
+
     def uniq_workers
         self.workers.uniq
     end
@@ -22,5 +23,16 @@ class Task < ApplicationRecord
             workers << worker.name
         end
         workers.join(", ")
+    end
+
+    def user
+        self.punch_list.project.user
+    end
+
+    def available_workers
+        workers = []
+        self.user.workers.each do |w|
+            workers << w
+        end
     end
 end

@@ -1,0 +1,4 @@
+<%= form_for @worker do |f| %>
+    <%= f.collection_select :tasks, @worker.available_tasks, :id, :name, include_blank: true %><br>
+    <%= f.submit "Add Task to Worker"%>
+<% end %>

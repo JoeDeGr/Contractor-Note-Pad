@@ -1,4 +1,4 @@
 <%= form_for @task do |f| %>
-    <%= f.collection_select :workers, Worker.all, :id, :name, include_blank: true %><br>
+    <%= f.collection_select :workers, @task.available_workers, :id, :name, include_blank: true %><br>
     <%= f.submit "Select" %>
 <% end %>
