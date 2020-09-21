@@ -35,6 +35,13 @@ class TasksController < ApplicationController
         redirect_to task_path(@task)
     end
 
+    def remove_worker
+        @task = Task.find(params[:id])
+        @worker = Worker.find(params[:worker])
+        @task.workers.delete(@worker)
+        redirect_to task_path(@task)
+    end
+
     private
 
     def task_params

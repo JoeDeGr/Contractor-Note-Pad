@@ -28,6 +28,9 @@
     <% if @task.workers.any? %>
         <%@task.workers.each do |w|%>
         <li><%= link_to "#{w.name}", w %></li>
+        <ul>
+            <%= button_to "Remove Worker", action = "/tasks/#{@task.id}/remove_worker", params: {worker: w}, data: {confirm: "Are YOU sure?"} %><br><br>
+        </ul>
         <%end%>
     <% else %>
         <li><em>There are no Workers Assigned to this task.</em></li>

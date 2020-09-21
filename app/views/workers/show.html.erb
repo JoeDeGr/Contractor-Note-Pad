@@ -6,7 +6,7 @@
         <% @worker.tasks.each do |t| %>
         <li> <%= link_to "#{t.name}", t %></li>
         <ul>
-            <em><%= button_to "Remove Task", action = "/workers/#{@worker.id}/remove_task", params: {task: t}, data: { confirm: "Are you sure?" } %></em>
+            <%= button_to "Remove Task", action = "/workers/#{@worker.id}/remove_task", params: {task: t}, data: { confirm: "Are you sure?" } %>
         </ul>
         <% end %>
     <% else %>
