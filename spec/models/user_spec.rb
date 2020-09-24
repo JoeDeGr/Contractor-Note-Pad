@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
   it "allows a User to create a worker" do
     visit("/users/#{user.id}")
     fill_in("worker[name]", :with => "Jack Hammer")
-    click_button("Create a New Worker")
+    click_button("Submit")
     expect(page).to have_content("Jack Hammer")
   end
      

@@ -4,14 +4,14 @@
 
 <% if @user.projects.any? %>
     <% @user.projects.each do |p| %>
-        <div> <%= link_to p.name, project_path(p) %></div>
+        <div> <%= link_to p.name, project_path(p) %></div><br>
     <% end %>
     <div>Or, Create a New Project</div>
 <%else%>
     <div> You don't have any Projects, Would you like to create one?</div>
 <% end %>
 
-<%= render partial: '/projects/form' %><br>
+<ul><%= render partial: '/projects/form' %><br></ul>
 
 <h3>Workers:</h3>
 <ul> 
@@ -22,6 +22,9 @@
     <% else %>
         <li>You do not have any workers </li>
     <% end %>
+    
 </ul>
+<div><em>Create a New Worker:<em><div>
+    <ul><%= render partial: '/workers/form' %></ul>
 
-    <%= render partial: '/workers/form' %>
+    

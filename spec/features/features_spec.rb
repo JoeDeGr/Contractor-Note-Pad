@@ -127,7 +127,7 @@ end
     visit("/users/#{@user.id}")
     # click_link("Create a New Worker")
     fill_in("worker[name]", :with => "Georgy Dosumtin")
-    click_button("Create a New Worker")
+    click_button("Submit")
     expect(current_path).to eq("/workers/#{Worker.last.id}")
     click_link("Home Page")
     expect(page).to have_content("Georgy Dosumtin")
@@ -149,14 +149,14 @@ end
 
   it "allows a user to edit a worker" do
     visit("/workers/#{@worker.id}/edit")
-    fill_in(worker[:name]), :with => "Changed My Name Boss"
-    click_button(submit)
+    fill_in("worker[name]", :with => "Changed My Name Boss")
+    click_button("Submit")
     expect(page).to have_content("Changed My Name Boss")
   end 
 
   it "allows the worker to have tasks" do
     visit("/workers/#{@worker.id}")
-    select("#{@task2.name}", from: 'select_box')
+    select("#{@task2.name}", :from => "worker_tasks")
     click_button("Add Task to Worker")
     expect(page).to have_content("#{@task.name}")
   end

@@ -1,5 +1,5 @@
 <%= form_tag (@worker || workers_path) do %>
     <div> Name: <%= text_field_tag "worker[name]", (@worker.name if @worker) %></div>
     <%= hidden_field_tag "worker[user_id]", @user.id %>
-    <%= submit_tag %>
+    <%= submit_tag "Submit"%>
 <% end %>
