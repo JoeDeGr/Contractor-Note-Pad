@@ -22,6 +22,11 @@ class PunchListsController < ApplicationController
         @user = User.find(@project.user_id)
     end
 
+    def edit
+        @punch_list = PunchList.find(params[:id])
+        @project = @punch_list.project
+    end
+
     private
     def punch_list_params
         params.require(:punch_list).permit(:name, :project_id)

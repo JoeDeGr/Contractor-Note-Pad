@@ -32,5 +32,5 @@
         <p> There aren't any workers assigned to this task. <p>
     <% end %>
 </ul>
-
+<%= link_to "Edit #{@punch_list.name}", edit_punch_list_path %><br>
 <%= link_to "#{@project.name}", project_path(@project) %>

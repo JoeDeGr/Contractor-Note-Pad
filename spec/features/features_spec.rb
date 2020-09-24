@@ -125,7 +125,6 @@ end
 
   it "allows the user to build a worker" do
     visit("/users/#{@user.id}")
-    # click_link("Create a New Worker")
     fill_in("worker[name]", :with => "Georgy Dosumtin")
     click_button("Submit")
     expect(current_path).to eq("/workers/#{Worker.last.id}")
