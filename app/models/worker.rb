@@ -6,7 +6,10 @@ class Worker < ApplicationRecord
     def available_tasks
         tasks = []
         self.user.tasks.each do |t|
-            tasks << t
+            if !self.tasks.include?(t)
+                tasks << t
+            end
         end
+        tasks
     end
 end
