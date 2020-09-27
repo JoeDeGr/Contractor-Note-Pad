@@ -32,7 +32,22 @@ class PunchListsController < ApplicationController
         @punch_list.update(punch_list_params)
         redirect_to punch_list_path(@punch_list)
     end
-    
+
+    def destroy
+        @punch_list = PunchList.find(params[:id])
+        @project = @punch_list.project
+
+        @punch_list.tasks.each do |t|
+            t.materials.each do |m|
+                m.destroy
+            end
+            t.destroy
+        end
+        @punch_list.destroy
+
+        redirect_to project_path(@project)
+    end
+
     private
     def punch_list_params
         params.require(:punch_list).permit(:name, :project_id)
