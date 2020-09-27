@@ -1,11 +1,8 @@
-<h4>Add some new Materials to your Task:</h4>
 <ul>
-    <%= form_tag materials_path do %>
     <%= hidden_field_tag "material[task_id]", @task.id %>
-    <div>Name: <%= text_field_tag "material[name]" %><div><br>
-    <div>Description: <%= text_area_tag "material[description]", 'Enter desciption here' %></div><br>
-    <div>Price: <%= text_field_tag "material[price]"%></div><br>
-    <div>Date Purchased <%= text_field_tag "material[date]", Time.now %></div><br>
-    <%= submit_tag "Add Materials to this Task" %>
-    <% end %>
+    <div>Name: <%= text_field_tag "material[name]", (@material.name if @material) %><div><br>
+    <div>Description: <%= text_area_tag "material[description]", (@material.description if @material) || 'Enter desciption here' %></div><br>
+    <div>Price: <%= text_field_tag "material[price]", (@material.price if @material) %></div><br>
+    <div>Date Purchased <%= text_field_tag "material[date]", (@material.date if @material) || Time.now %></div><br>
+    
 </ul>

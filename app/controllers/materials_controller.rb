@@ -24,6 +24,25 @@ class MaterialsController < ApplicationController
     end
     
     def edit
+        @material = Material.find(params[:id])
+        @task = @material.task
+    end
+
+    def update
+        @material = Material.find(params[:id])
+        @material.update(material_params)
+        if @material.valid?
+            redirect_to material_path(@material)
+        else
+            render @material.show
+        end
+    end
+
+    def destroy
+        @material = Material.find(params[:id])
+        @task = @material.task
+        @material.destroy
+        redirect_to task_path(@task)
     end
 
     private
@@ -35,5 +54,4 @@ class MaterialsController < ApplicationController
     def material_price_params
         params.require(:material).permit(:price)
     end
-
 end

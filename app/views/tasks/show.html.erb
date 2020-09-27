@@ -20,7 +20,13 @@
         <p> You do not have any materials for this task. <p>
     <% end %>
 </ul>
-<h4> <%= render partial: "/materials/form" %></h4>
+<h4>Add some new Materials to your Task:</h4>
+<ul>
+    <%= form_tag materials_path do %>
+        <%= render partial: "/materials/form" %>
+        <%= submit_tag "Add Materials to this Task" %>
+    <% end %>
+</ul>
 
 
 <h3>Workers Assigned to this Task:</h3>

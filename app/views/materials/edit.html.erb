@@ -1,0 +1,15 @@
+<h2> <%= "#{@material.name} in #{@task.name}" %> <h2>
+
+<h3>Edit your Material:</h3>
+
+<ul>
+    <%= form_for @material do %>
+        <%= render partial: "materials/form" %>
+        <%= submit_tag "Update this Material" %>
+    <% end %><br>
+    <%= link_to "Delete #{@material.name}", @material, :method => :delete, :data => {:confirm => "Are you sure?"} %><br><br>
+</ul>
+
+<%= link_to "Return to Material", @material %><br>
+
+<%= link_to "Return_to #{@task.name}", @task %>
