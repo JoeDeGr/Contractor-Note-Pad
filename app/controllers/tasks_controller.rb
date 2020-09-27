@@ -35,12 +35,25 @@ class TasksController < ApplicationController
         redirect_to task_path(@task)
     end
 
+    def destroy
+        @task = Task.find(params[:id])
+        @punch_list = @task.punch_list
+        @task.materials.each do |m|
+            m.destroy
+        end
+        @task.destroy
+        redirect_to punch_list_path(@punch_list)
+    end
+
     def remove_worker
         @task = Task.find(params[:id])
         @worker = Worker.find(params[:worker])
         @task.workers.delete(@worker)
         redirect_to task_path(@task)
     end
+
+    
+
 
     private
 

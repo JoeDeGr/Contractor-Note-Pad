@@ -1,4 +1,6 @@
 <%= render partial: '/tasks/form'%><br>
 
+<%= link_to "Delete this task.", @task, :method => :delete, :data => {:confirm => "Are you sure you would like to delete this task?"} %><br><br>
+
 <%= link_to "Return to #{@task.name}", task_path(@task)%><br><br>
 <%= link_to "#{@punch_list.name}", punch_list_path(@punch_list) %>
