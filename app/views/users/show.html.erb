@@ -12,6 +12,11 @@
 <% end %>
 <%= form_tag projects_path do %>
     <ul>
+        <% if @project %>
+            <% @project.errors.full_messages.each do |m| %>
+                <%= m %>
+            <% end %>
+        <% end %>
         <%= render partial: '/projects/form' %>
         <%= submit_tag "Create a new Project"%>
     </ul>
@@ -35,5 +40,5 @@
     <ul><%= render partial: '/workers/form' %></ul>
 
 
-<%= link_to "Edit User", edit_user_path %>
+<%= link_to "Edit User", edit_user_path(@user) %>
     

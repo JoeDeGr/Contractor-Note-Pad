@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
 
     def new
-        @project = Project.new
-        @user = @project.user
     end
 
     def create
@@ -12,7 +10,7 @@ class ProjectsController < ApplicationController
             @project.save
             redirect_to project_path(@project)
         else
-            redirect_to user_path(@user)
+            render "/users/show"
         end
     end
 
@@ -29,6 +27,8 @@ class ProjectsController < ApplicationController
         @project = Project.find(params[:id])
         @project.update(project_params)
         redirect_to project_path(@project)
+    end
+    def destroy
     end
 
     private
