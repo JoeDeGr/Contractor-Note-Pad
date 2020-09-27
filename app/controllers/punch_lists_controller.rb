@@ -27,6 +27,12 @@ class PunchListsController < ApplicationController
         @project = @punch_list.project
     end
 
+    def update
+        @punch_list = PunchList.find(params[:id])
+        @punch_list.update(punch_list_params)
+        redirect_to punch_list_path(@punch_list)
+    end
+    
     private
     def punch_list_params
         params.require(:punch_list).permit(:name, :project_id)

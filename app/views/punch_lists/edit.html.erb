@@ -1,2 +1,4 @@
 <h1> Edit <%=@punch_list.name%></h1>
+<%= form_for @punch_list do %>
 <%= render partial: "/punch_lists/form" %>
+<% end %>

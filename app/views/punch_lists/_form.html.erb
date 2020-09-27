@@ -1,5 +1,4 @@
-<%= form_tag (@punch_list || punch_lists_path) do %>
+
 <div>Name: <%= text_field_tag "punch_list[name]", (@punch_list.name if @punch_list) %></div><br>
 <%= hidden_field_tag "punch_list[project_id]", @project.id %>
 <%= submit_tag %>
-<% end %>

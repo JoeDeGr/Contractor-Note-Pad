@@ -13,7 +13,9 @@
         <H3>You dont have any Punch Lists for this Project yet!</h3>
     <% end %>
 
-    <li> <%= render partial: '/punch_lists/form' %></li>    
+        <%= form_tag punch_lists_path do %>
+            <li><%= render partial: '/punch_lists/form' %></li>
+        <% end %>   
 </ul>
 
 <%= link_to "Edit #{@project.name}", edit_project_path %><br>
