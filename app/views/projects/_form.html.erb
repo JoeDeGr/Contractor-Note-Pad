@@ -1,5 +1,3 @@
-<%= form_tag (@project || projects_path) do %>
-    <div> Name: <%= text_field_tag "project[name]", (@project.name if @project) %></div><br>
+   <div> Name: <%= text_field_tag "project[name]", (@project.name if @project) %></div><br>
     <%= hidden_field_tag "project[user_id]", @user.id %>
     <%= submit_tag %>
-<% end %>

@@ -1,9 +1,5 @@
 <h1>Edit <%= @project.name %></h1>
 
-<%# <%= render partial: "projects/form" %> %>
-<%#  %>
 <%= form_for @project do %>
-    <div> Name: <%= text_field_tag "project[name]", (@project.name if @project) %></div><br>
-    <%= hidden_field_tag "project[user_id]", @user.id %>
-    <%= submit_tag %>
+<%=render partial: "/projects/form"%>
 <% end %>

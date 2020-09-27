@@ -10,8 +10,9 @@
 <%else%>
     <div> You don't have any Projects, Would you like to create one?</div>
 <% end %>
-
-<ul><%= render partial: '/projects/form' %><br></ul>
+<%= form_tag projects_path do %>
+    <ul><%= render partial: '/projects/form' %><br></ul>
+<% end %>
 
 <h3>Workers:</h3>
 <ul> 
