@@ -1,0 +1,12 @@
+<h1> <%= @user.name %></h1>
+
+<% if @user.errors.any? %>
+    <div> DANEGER RILL WOBBINSONSON! DANGER!<div>
+        <% @user.errors.full_messages.each do |m| %>
+            <li><em><%= m  %></em></li>
+        <% end %>
+<% end %>
+<%= form_for @user do %>
+    <%= render partial: "/users/form" %>
+<%= submit_tag "Update User" %>
+<% end %>

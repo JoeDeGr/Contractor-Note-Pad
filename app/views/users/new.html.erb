@@ -12,9 +12,6 @@
     </div>
 <% end %>
 <%= form_tag users_path do %>
-<div>Name: <%= text_field_tag "user[name]" %></div>
-<div>Email: <%= text_field_tag "user[email]" %></div>
-<div>Password: <%= text_field_tag "user[password]" %></div>
-<div>Please Confirm Your Password: <%= text_field_tag "user[password_confirmation]" %></div>
-<div><%= submit_tag "Create User"%>
+    <%= render partial: "/users/form "%>
+    <div><%= submit_tag "Create User"%>
 <% end %>

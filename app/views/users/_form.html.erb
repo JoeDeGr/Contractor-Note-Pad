@@ -1,0 +1,6 @@
+
+<li>Name: <%= text_field_tag "user[name]", (@user.name if @user)%></li>
+<li>Email: <%= text_field_tag "user[email]", (@user.email if @user) %></li>
+<li>Password: <%= text_field_tag "user[password]" %></li>
+<li>Please Confirm Your Password: <%= text_field_tag "user[password_confirmation]" %></li>    
+    

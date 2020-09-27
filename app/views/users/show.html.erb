@@ -19,6 +19,7 @@
     <% if @user.workers.any? %>
         <% @user.workers.each do |w| %>
             <li> <%= link_to "#{w.name}", w %> </li><br>
+            <%= link_to "Delete #{w.name}", w, :method => :delete, :confirm => "Are you sure?" %>
         <% end %>
     <% else %>
         <li>You do not have any workers </li>
@@ -28,4 +29,6 @@
 <div><em>Create a New Worker:<em><div>
     <ul><%= render partial: '/workers/form' %></ul>
 
+
+<%= link_to "Edit User", edit_user_path %>
     
