@@ -1,16 +1,18 @@
 class ProjectsController < ApplicationController
 
     def new
+        @project = Project.new
+        @user = @project.user
     end
 
     def create
         @project = Project.new(project_params)
-        
+        @user = @project.user
         if @project.valid?
             @project.save
             redirect_to project_path(@project)
         else
-            render "new"
+            redirect_to user_path(@user)
         end
     end
 

@@ -10,5 +10,7 @@
         </ul>
     </div>
 <% end %>
-
-<%= render partial: "/projects/form" %>
+<%= form_for @project do %>
+    <%= render partial: "/projects/form" %>
+    <%= submit_tag "Create Project" %>
+<% end %>

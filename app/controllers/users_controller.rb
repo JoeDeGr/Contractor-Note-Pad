@@ -32,6 +32,27 @@ class UsersController < ApplicationController
         end
     end 
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.projects.each do |p|
+            p.destroy
+        end
+        @user.punch_lists.each do |p|
+            p.destroy
+        end
+        @user.tasks.each do |t|
+            t.materials.each do |m|
+                m.destroy
+            end
+            t.destroy
+        end
+        @user.workers.each do |w|
+            w.destroy
+        end
+        @user.destroy
+        redirect_to root_path
+    end
+
     private
 
     def user_params

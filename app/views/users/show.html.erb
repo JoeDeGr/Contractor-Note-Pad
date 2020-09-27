@@ -11,18 +11,23 @@
     <div> You don't have any Projects, Would you like to create one?</div>
 <% end %>
 <%= form_tag projects_path do %>
-    <ul><%= render partial: '/projects/form' %><br></ul>
+    <ul>
+        <%= render partial: '/projects/form' %>
+        <%= submit_tag "Create a new Project"%>
+    </ul>
 <% end %>
 
 <h3>Workers:</h3>
 <ul> 
     <% if @user.workers.any? %>
         <% @user.workers.each do |w| %>
-            <li> <%= link_to "#{w.name}", w %> </li><br>
-            <%= link_to "Delete #{w.name}", w, :method => :delete, :confirm => "Are you sure?" %>
+            <li><h4><%= link_to "#{w.name}", w %></h4></li>
+            <ul>
+                <%= link_to "Delete #{w.name}", w, :method => :delete, :data => {confirm: "Are you sure?"} %><br>
+            </ul>
         <% end %>
     <% else %>
-        <li>You do not have any workers </li>
+        <li><em>You do not have any workers.</em></li>
     <% end %>
     
 </ul>
