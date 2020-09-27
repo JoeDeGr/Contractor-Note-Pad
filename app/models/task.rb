@@ -30,9 +30,12 @@ class Task < ApplicationRecord
     end
 
     def available_workers
-        workers = []
+        workers_available = []
         self.user.workers.each do |w|
-            workers << w
+            if !self.workers.include?(w)
+                workers_available << w 
+            end
         end
+        workers_available
     end
 end
