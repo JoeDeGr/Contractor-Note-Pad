@@ -3,4 +3,6 @@
 <%= form_for @project do %>
 <%=render partial: "/projects/form"%>
 <%= submit_tag "Update" %>
-<% end %>
+<% end %><br>
+
+<%= link_to "Delete Project", @project, :method => :delete, :data => {:confirm => "Are You sure you want to delete this 'for good'?"} %>

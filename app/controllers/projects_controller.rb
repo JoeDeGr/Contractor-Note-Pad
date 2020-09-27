@@ -28,7 +28,21 @@ class ProjectsController < ApplicationController
         @project.update(project_params)
         redirect_to project_path(@project)
     end
+
     def destroy
+        @project = Project.find(params[:id])
+        @user = @project.user
+        @project.tasks.each do |t|
+            t.materials.each do |m|
+                m.destroy
+            end
+            t.destroy
+        end
+        @project.punch_lists.each do |p|
+            p.destroy
+        end
+        @project.destroy
+        redirect_to user_path(@user)
     end
 
     private
