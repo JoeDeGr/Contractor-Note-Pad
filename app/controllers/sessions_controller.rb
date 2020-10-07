@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
+  skip_before_action :current_user
+  
   def index
-  end
-
-  def new
-
   end
 
   def create
