@@ -3,4 +3,5 @@
 <%= render partial: "/punch_lists/form" %><br>
 <% end %><br>
 
-<%= link_to "Delete Punch List", @punch_list, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{@punch_list.name}?"} %>
+<%= link_to "Delete Punch List", @punch_list, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{@punch_list.name}?"} %><br><br>
+<%= link_to "Return to Punch List", @punch_list %>
