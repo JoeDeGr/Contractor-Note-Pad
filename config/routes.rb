@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   resources :tasks
   resources :punch_lists
   resources :projects
-  root 'sessions#index'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  resources :sessions
   resources :users
+  root 'sessions#index'
+  
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
+
   post 'workers/:id', to: 'workers#update'
   post 'workers/:id/remove_task', to: 'workers#remove_task'
   post 'tasks/:id/remove_worker', to: 'tasks#remove_worker'

@@ -1,44 +1,47 @@
-<h1><%=@user.name%>'s Note Pad<h1><br>
+<header class="todoapp">
+    <h1><%=@user.name%>'s Note Pad</h1><br>
 
-<h3> Which project are we working on?</h3>
+    <h3 > Which project are we working on?</h3>
 
-<% if @user.projects.any? %>
-    <% @user.projects.each do |p| %>
-        <div> <%= link_to p.name, project_path(p) %></div><br>
+    <div > <% if @user.projects.any? %>
+        <% @user.projects.each do |p| %>
+            <li> <%= link_to p.name, project_path(p) %></li><br>
+        <% end %>
+        <li>Or, Create a New Project</li>
+    <%else%>
+        <li> You don't have any Projects, Would you like to create one?</li>
     <% end %>
-    <div>Or, Create a New Project</div>
-<%else%>
-    <div> You don't have any Projects, Would you like to create one?</div>
-<% end %>
-<%= form_tag projects_path do %>
-    <ul>
-        <% if @project %>
-            <% @project.errors.full_messages.each do |m| %>
-                <%= m %>
+    <%= form_tag projects_path do %>
+        <ul>
+            <% if @project %>
+                <% @project.errors.full_messages.each do |m| %>
+                    <%= m %>
+                <% end %>
             <% end %>
-        <% end %>
-        <%= render partial: '/projects/form' %>
-        <%= submit_tag "Create a new Project"%>
-    </ul>
-<% end %>
-
-<h3>Workers:</h3>
-<ul> 
-    <% if @user.workers.any? %>
-        <% @user.workers.each do |w| %>
-            <li><h4><%= link_to "#{w.name}", w %></h4></li>
-            <ul>
-                <%= link_to "Delete #{w.name}", w, :method => :delete, :data => {confirm: "Are you sure?"} %><br>
-            </ul>
-        <% end %>
-    <% else %>
-        <li><em>You do not have any workers.</em></li>
+            <%= render partial: '/projects/form' %>
+            <%= submit_tag "Create a new Project"%>
+        </ul>
     <% end %>
-    
-</ul>
-<div><em>Create a New Worker:<em><div>
-    <ul><%= render partial: '/workers/form' %></ul>
+</header>
 
+<section>
+    <h3>Workers:</h3>
+    <ul> 
+        <% if @user.workers.any? %>
+            <% @user.workers.each do |w| %>
+                <li><h4><%= link_to "#{w.name}", w %></h4></li>
+                <ul>
+                    <%= link_to "Delete #{w.name}", w, :method => :delete, :data => {confirm: "Are you sure?"} %><br>
+                </ul>
+            <% end %>
+        <% else %>
+            <li><em>You do not have any workers.</em></li>
+        <% end %>
 
-<%= link_to "Edit User", edit_user_path(@user) %>
-    
+    </ul>
+    <div><em>Create a New Worker:<em><div>
+        <ul><%= render partial: '/workers/form' %></ul>
+
+</section>
+<%= link_to "Edit User", edit_user_path(@user) %><br><br>
+<%= link_to "Log Out", session_path(:user), :method => :delete, :data=> {:confirm => "Are you sure you want to log out?"} %> 
