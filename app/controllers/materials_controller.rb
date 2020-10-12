@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
-    
+    before_action :this_material
+    before_action :authorized_user
     
     def new
     end
@@ -17,20 +18,16 @@ class MaterialsController < ApplicationController
     end
 
     def show
-        @material = Material.find(params[:id])
         @task = Task.find(@material.task_id)
         @punch_list = PunchList.find(@task.punch_list_id)
         @project = Project.find(@punch_list.project_id)
-        @user = User.find(@project.user_id)
     end
     
     def edit
-        @material = Material.find(params[:id])
         @task = @material.task
     end
 
     def update
-        @material = Material.find(params[:id])
         @material.update(material_params)
         if @material.valid?
             redirect_to material_path(@material)
@@ -40,7 +37,6 @@ class MaterialsController < ApplicationController
     end
 
     def destroy
-        @material = Material.find(params[:id])
         @task = @material.task
         @material.destroy
         redirect_to task_path(@task)
@@ -54,5 +50,17 @@ class MaterialsController < ApplicationController
 
     def material_price_params
         params.require(:material).permit(:price)
+    end
+
+    def this_material
+        @Material = PunchList.find(params[:id])
+    end
+    
+    def authorized_user
+        if !(@Material.user == current_user)
+            flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+            session.destroy
+            redirect_to root_path
+        end
     end
 end

@@ -13,4 +13,8 @@ class Material < ApplicationRecord
         total = 0
         "$#{self.price.to_s[0..-3]}.#{self.price.to_s.last(2)}" 
     end
+
+    def user
+        self.task.user
+    end
 end
