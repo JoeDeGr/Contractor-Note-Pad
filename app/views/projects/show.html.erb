@@ -12,10 +12,14 @@
     <% else %>
         <H3>You dont have any Punch Lists for this Project yet!</h3>
     <% end %>
-
+        <% if @punch_list %>
+            <% @punch_list.errors.full_messages.each do |msg| %>
+                <%= msg %>
+            <% end %>
+        <% end %>
         <%= form_tag punch_lists_path do %>
             <li><%= render partial: '/punch_lists/form' %></li>
         <% end %>   
 </ul>
 
-<%= link_to "Edit #{@project.name}", edit_project_path %><br>
+<%= link_to "Edit #{@project.name}", edit_project_path(@project) %><br>
