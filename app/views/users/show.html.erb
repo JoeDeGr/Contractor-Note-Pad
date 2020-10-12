@@ -42,6 +42,11 @@
 
     </ul>
     <div><em>Create a New Worker:<em><div>
+        <% if @worker %>
+            <% @worker.errors.full_messages.each do |m| %>
+                <%= m %>
+            <% end %>
+        <% end %>
         <ul><%= render partial: '/workers/form' %></ul>
 
 </section>

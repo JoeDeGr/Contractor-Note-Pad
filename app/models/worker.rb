@@ -1,5 +1,6 @@
 class Worker < ApplicationRecord
     belongs_to :user
+    validates :name, presence: true
     has_many :worker_tasks
     has_many :tasks, through: :worker_tasks
 

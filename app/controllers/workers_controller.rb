@@ -7,23 +7,20 @@ class WorkersController < ApplicationController
         
     def create
         @worker = Worker.new(worker_params)
-        @user=User.find(worker_params[:user_id])
         if @worker.valid?
             @worker.save
             redirect_to worker_path(@worker)
         else
-            render 'new'
+            render '/users/show'
         end
     end
 
     def show
         @worker = Worker.find(params[:id])
-        @user = @worker.user
     end
 
     def edit
         @worker = Worker.find(params[:id])
-        @user = @worker.user
     end
 
     def update
@@ -46,7 +43,6 @@ class WorkersController < ApplicationController
 
     def destroy
         @worker = Worker.find(params[:id])
-        @user = @worker.user
         @worker.destroy
         redirect_to user_path(@user)
     end
@@ -56,4 +52,5 @@ class WorkersController < ApplicationController
     def worker_params
         params.require(:worker).permit(:name, :user_id)
     end
+
 end
