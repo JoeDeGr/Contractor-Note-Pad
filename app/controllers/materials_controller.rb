@@ -53,7 +53,7 @@ class MaterialsController < ApplicationController
     end
 
     def this_material
-        @Material = PunchList.find(params[:id])
+        @Material = Material.find(params[:id])
     end
     
     def authorized_user
