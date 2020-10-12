@@ -1,12 +1,9 @@
 class MaterialsController < ApplicationController
     before_action :this_material
-    skip_before_action :this_material, only: [:new, :create]
+    skip_before_action :this_material, only: [:create]
     before_action :authorized_user
-    skip_before_action :authorized_user, only: [:new, :create]
-    
-    def new
-    end
-    
+    skip_before_action :authorized_user, only: [:create]
+
     def create
         @material = Material.new(material_params)
         @material.price = @material.material_price_parse

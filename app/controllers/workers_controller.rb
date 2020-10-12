@@ -1,8 +1,8 @@
 class WorkersController < ApplicationController
     before_action :this_worker
-    skip_before_action :this_worker, only: [:new, :create]
+    skip_before_action :this_worker, only: [:create]
     before_action :authorized_user
-    skip_before_action :authorized_user, only: [:new, :create]
+    skip_before_action :authorized_user, only: [:create]
 
     def new
     @user = User.find(params[:id])

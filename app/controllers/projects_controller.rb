@@ -1,11 +1,8 @@
 class ProjectsController < ApplicationController
     before_action :this_project
-    skip_before_action :this_project, only: [:new, :create]
+    skip_before_action :this_project, only: [:create]
     before_action :authorized_user
-    skip_before_action :authorized_user, only: [:new, :create]
-
-    def new
-    end
+    skip_before_action :authorized_user, only: [:create]
 
     def create
         @project = Project.new(project_params)
