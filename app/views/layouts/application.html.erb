@@ -10,6 +10,13 @@
   </head>
 
   <body>
+  <% if flash.any?%>
+    <% flash.each do |type, msg| %>
+    <div class = "error_message">
+        <%= msg %>
+    </div>
+    <% end %>
+<% end %>
     <%= yield %>
   </body>
   <footer><br>

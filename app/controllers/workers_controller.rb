@@ -1,5 +1,4 @@
 class WorkersController < ApplicationController
-    before_action :require_login
     
     def new
     @user = User.find(params[:id])

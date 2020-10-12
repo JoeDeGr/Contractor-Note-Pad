@@ -1,12 +1,5 @@
 <h1>Log in!</h1>
 
-<% if flash.any?%>
-    <% flash.each do |type, msg| %>
-    <div class = "error_message">
-        <%= msg %>
-    </div>
-    <% end %>
-<% end %>
 <%=form_tag sessions_path do %>
 <li>Name: <%= text_field_tag "user[name]" %></li>
 <p>Or,</p>

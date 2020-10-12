@@ -26,4 +26,8 @@ class PunchList < ApplicationRecord
         end
         workers.join(", ")
     end
+
+    def user
+        self.project.user
+    end
 end

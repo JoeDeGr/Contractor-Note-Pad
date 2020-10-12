@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
-    # before_action :authorized_user
+    before_action :this_task
+    before_action :authorized_user
+
     def new
     end
 
@@ -15,7 +17,6 @@ class TasksController < ApplicationController
     end
 
     def show
-        binding.pry
         @task = Task.find(params[:id])
         @punch_list = PunchList.find(@task.punch_list_id)
         @project = Project.find(@punch_list.project_id)
@@ -61,5 +62,17 @@ class TasksController < ApplicationController
 
     def task_params
         params.require(:task).permit(:name, :punch_list_id, :description)
+    end
+
+    def this_task
+        @task = Task.find(params[:id])
+    end
+    
+    def authorized_user
+        if !(@task.user == current_user)
+            flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+            session.destroy
+            redirect_to root_path
+        end
     end
 end

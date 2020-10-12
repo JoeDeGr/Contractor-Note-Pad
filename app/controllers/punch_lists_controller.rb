@@ -1,4 +1,6 @@
 class PunchListsController < ApplicationController
+    before_action :this_list
+    before_action :authorized_user
     
     def new
     end
@@ -17,27 +19,21 @@ class PunchListsController < ApplicationController
     end
 
     def show
-        @punch_list = PunchList.find(params[:id])
         @workers = @punch_list.uniq_workers
         @project = Project.find(@punch_list.project_id)
-        @user = User.find(@project.user_id)
     end
 
     def edit
-        @punch_list = PunchList.find(params[:id])
         @project = @punch_list.project
     end
 
     def update
-        @punch_list = PunchList.find(params[:id])
         @punch_list.update(punch_list_params)
         redirect_to punch_list_path(@punch_list)
     end
 
     def destroy
-        @punch_list = PunchList.find(params[:id])
         @project = @punch_list.project
-
         @punch_list.tasks.each do |t|
             t.materials.each do |m|
                 m.destroy
@@ -52,5 +48,16 @@ class PunchListsController < ApplicationController
     private
     def punch_list_params
         params.require(:punch_list).permit(:name, :project_id)
+    end
+    def this_list
+        @punch_list = PunchList.find(params[:id])
+    end
+    
+    def authorized_user
+        if !(@punch_list.user == current_user)
+            flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+            session.destroy
+            redirect_to root_path
+        end
     end
 end
