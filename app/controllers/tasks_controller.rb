@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :require_login
+    # before_action :authorized_user
     def new
     end
 
@@ -15,6 +15,7 @@ class TasksController < ApplicationController
     end
 
     def show
+        binding.pry
         @task = Task.find(params[:id])
         @punch_list = PunchList.find(@task.punch_list_id)
         @project = Project.find(@punch_list.project_id)

@@ -1,28 +1,30 @@
-<header class="todoapp">
-    <h1><%=@user.name%>'s Note Pad</h1><br>
+<section class="todoapp">
+    <header class="header">
+        <h1><%=@user.name%>'s Note Pad</h1><br>
 
-    <h3 > Which project are we working on?</h3>
+        <h3 > Which project are we working on?</h3>
 
-    <div > <% if @user.projects.any? %>
-        <% @user.projects.each do |p| %>
-            <li> <%= link_to p.name, project_path(p) %></li><br>
-        <% end %>
-        <li>Or, Create a New Project</li>
-    <%else%>
-        <li> You don't have any Projects, Would you like to create one?</li>
-    <% end %>
-    <%= form_tag projects_path do %>
-        <ul>
-            <% if @project %>
-                <% @project.errors.full_messages.each do |m| %>
-                    <%= m %>
-                <% end %>
+        <div > <% if @user.projects.any? %>
+            <% @user.projects.each do |p| %>
+                <li> <%= link_to p.name, project_path(p) %></li><br>
             <% end %>
-            <%= render partial: '/projects/form' %>
-            <%= submit_tag "Create a new Project"%>
-        </ul>
-    <% end %>
-</header>
+            <li>Or, Create a New Project</li>
+        <%else%>
+            <li> You don't have any Projects, Would you like to create one?</li>
+        <% end %>
+        <%= form_tag projects_path do %>
+            <ul>
+                <% if @project %>
+                    <% @project.errors.full_messages.each do |m| %>
+                        <%= m %>
+                    <% end %>
+                <% end %>
+                <%= render partial: '/projects/form' %>
+                <%= submit_tag "Create a new Project"%>
+            </ul>
+        <% end %>
+    </header>
+</section>
 
 <section>
     <h3>Workers:</h3>

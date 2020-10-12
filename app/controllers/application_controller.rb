@@ -11,4 +11,14 @@ private
         @user = (User.find(session[:user_id]) || User.new)
     end
 
+    def authorized_user
+        if self.user == current_user
+            @user = self.user
+        else
+            flash[:notice] = "You are not authorized for this action."
+            session.destroy
+            redirect_to '/login'
+        end
+    end
+
 end
