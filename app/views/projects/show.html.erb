@@ -24,4 +24,4 @@
         <% end %>   
 </ul>
 
-<%= link_to "Edit #{@project.name}", edit_project_path(@project) %><br>
+<%= link_to "Edit #{@project.name}", edit_user_project_path(@project.user, @project.id) %><br>

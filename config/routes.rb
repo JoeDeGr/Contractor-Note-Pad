@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
+  resources :users do
+    resources :workers, only: [:show, :edit]
+    resources :projects, only: [:show, :edit]
+  end
   resources :workers
   resources :materials
   resources :tasks
   resources :punch_lists
   resources :projects
   resources :sessions
-  resources :users
-  root 'sessions#index'
   
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy'
+  root 'sessions#index'
 
   post 'workers/:id', to: 'workers#update'
   post 'workers/:id/remove_task', to: 'workers#remove_task'
