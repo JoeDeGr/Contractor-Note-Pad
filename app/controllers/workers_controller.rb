@@ -1,5 +1,9 @@
 class WorkersController < ApplicationController
-    
+    before_action :this_worker
+    skip_before_action :this_worker, only: [:new, :create]
+    before_action :authorized_user
+    skip_before_action :authorized_user, only: [:new, :create]
+
     def new
     @user = User.find(params[:id])
     end
@@ -52,4 +56,15 @@ class WorkersController < ApplicationController
         params.require(:worker).permit(:name, :user_id)
     end
 
+    def this_worker
+        @worker = Worker.find(params[:id])
+    end
+    
+    def authorized_user
+        if !(@worker.user == current_user)
+            flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+            session.destroy
+            redirect_to root_path
+        end
+    end
 end

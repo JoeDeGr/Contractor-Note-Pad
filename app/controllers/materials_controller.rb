@@ -1,6 +1,8 @@
 class MaterialsController < ApplicationController
     before_action :this_material
+    skip_before_action :this_material, only: [:new, :create]
     before_action :authorized_user
+    skip_before_action :authorized_user, only: [:new, :create]
     
     def new
     end
@@ -53,11 +55,11 @@ class MaterialsController < ApplicationController
     end
 
     def this_material
-        @Material = Material.find(params[:id])
+        @material = Material.find(params[:id])
     end
     
     def authorized_user
-        if !(@Material.user == current_user)
+        if !(@material.user == current_user)
             flash[:notice] = "You are not authorized for this action. Please log back in and try again."
             session.destroy
             redirect_to root_path

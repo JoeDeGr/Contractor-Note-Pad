@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
     before_action :this_task
+    skip_before_action :this_task, only: [:new, :create]
     before_action :authorized_user
+    skip_before_action :authorized_user, only: [:new, :create]
 
     def new
     end

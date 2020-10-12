@@ -10,14 +10,16 @@
   </head>
 
   <body>
-  <% if flash.any?%>
-    <% flash.each do |type, msg| %>
-    <div class = "error_message">
-        <%= msg %>
-    </div>
-    <% end %>
-<% end %>
-    <%= yield %>
+    <section class="contractor_note_pad">
+      <% if flash.any?%>
+        <% flash.each do |type, msg| %>
+        <div class = "error_message">
+            <%= msg %>
+        </div>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </section>
   </body>
   <footer><br>
     <% if @user %>

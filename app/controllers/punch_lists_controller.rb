@@ -1,6 +1,8 @@
 class PunchListsController < ApplicationController
     before_action :this_list
+    skip_before_action :this_list, only: [:new, :create]
     before_action :authorized_user
+    skip_before_action :authorized_user, only: [:new, :create]
     
     def new
     end
