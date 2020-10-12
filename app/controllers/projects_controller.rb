@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-    before_action :require_login
+    before_action :this_project
+    before_action :authorized_user
 
     def new
     end
@@ -50,5 +51,17 @@ class ProjectsController < ApplicationController
 
     def project_params
         params.require(:project).permit(:name, :user_id)
+    end
+
+    def this_project
+        @project = Project.find(params[:id])
+    end
+    
+    def authorized_user
+        if !(@project.user == current_user)
+            flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+            session.destroy
+            redirect_to root_path
+        end
     end
 end
