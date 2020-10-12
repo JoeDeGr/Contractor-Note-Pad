@@ -10,11 +10,12 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         @punch_list = PunchList.find(params[:task][:punch_list_id])
+        @project = @punch_list.project
         if @task.valid?
             @task.save
             redirect_to task_path(@task)
         else
-            render '/tasks/new'
+            render '/punch_lists/show'
         end
     end
 

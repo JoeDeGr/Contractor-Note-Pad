@@ -14,7 +14,9 @@
     <% end %>
         <% if @punch_list %>
             <% @punch_list.errors.full_messages.each do |msg| %>
-                <%= msg %>
+                <div class="error_messages"> 
+                    <%= msg %>
+                </div>
             <% end %>
         <% end %>
         <%= form_tag punch_lists_path do %>

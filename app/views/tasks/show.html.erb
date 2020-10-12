@@ -21,6 +21,13 @@
     <% end %>
 </ul>
 <h4>Add some new Materials to your Task:</h4>
+    <% if @material %>
+        <% @material.errors.full_messages.each do |msg| %>
+            <div class="error_messages"> 
+                <%= msg %>
+            </div>
+        <% end %>
+    <% end %>
 <ul>
     <%= form_tag materials_path do %>
         <%= render partial: "/materials/form" %>

@@ -1,12 +1,9 @@
 class PunchListsController < ApplicationController
     before_action :this_list
-    skip_before_action :this_list, only: [:new, :create]
+    skip_before_action :this_list, only: [:create]
     before_action :authorized_user
-    skip_before_action :authorized_user, only: [:new, :create]
+    skip_before_action :authorized_user, only: [:create]
     
-    def new
-    end
-
     def create
         @punch_list = PunchList.new(punch_list_params)
         @project = Project.find(params[:punch_list][:project_id])

@@ -16,6 +16,13 @@
     <% end %>
     
     <li><em>Build a new Task:</li>
+    <% if @task %>
+        <% @task.errors.full_messages.each do |msg| %>
+            <div class="error_messages"> 
+                <%= msg %>
+            </div>
+        <% end %>
+    <% end %>
     <ul>
         <%= render partial: "/tasks/form" %></em>
     </ul>
@@ -32,5 +39,5 @@
         <p> There aren't any workers assigned to this task. <p>
     <% end %>
 </ul>
-<%= link_to "Edit #{@punch_list.name}", edit_punch_list_path %><br>
+<%= link_to "Edit #{@punch_list.name}", edit_punch_list_path(@punch_list) %><br>
 <%= link_to "#{@project.name}", project_path(@project) %>
