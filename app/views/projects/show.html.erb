@@ -1,7 +1,7 @@
 <h1><%= @project.name %></h1>
 <div>Materials Total for this project: <%=@project.materials_total%></div>
 <ul>
-    <% if @project.punch_lists %>
+    <% if @project.punch_lists.any? %>
         <% @project.punch_lists.each do |list|%>
             <li><%= link_to "#{list.name}", punch_list_path(list)%></li>
             <ul>

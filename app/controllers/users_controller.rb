@@ -32,17 +32,18 @@ class UsersController < ApplicationController
     end 
 
     def destroy
-        @user.projects.each do |p|
-            p.destroy
-        end
-        @user.punch_lists.each do |p|
-            p.destroy
-        end
+        
         @user.tasks.each do |t|
             t.materials.each do |m|
                 m.destroy
             end
             t.destroy
+        end
+        @user.punch_lists.each do |p|
+            p.destroy
+        end
+        @user.projects.each do |p|
+            p.destroy
         end
         @user.workers.each do |w|
             w.destroy
