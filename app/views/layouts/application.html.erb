@@ -23,8 +23,8 @@
   </body>
   <footer><br>
     <% if @user %>
-      <%= link_to "Home Page", user_path(@user.id)%><br>
-      <%= link_to "Log Out", session_path(:user), :method => :delete, :data=> {:confirm => "Are you sure you want to log out?"} %>
+      <%= link_to "Home Page", user_path(@user.id) if @user.id %><br>
+      <%= link_to "Log Out", session_path(:user), :method => :delete, :data=> {:confirm => "Are you sure you want to log out?"} if @user.id %>
     <% end %><br>
 
     <onalleverytime><em>Made with Love</em><onalleverytime>

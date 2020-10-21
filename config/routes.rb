@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   root 'sessions#index'
 
-  get '/auth/facebook/callback' => 'sessions#o_auth'
+  get '/auth/facebook/callback', to: 'sessions#o_auth'
 
   post 'workers/:id', to: 'workers#update'
   post 'workers/:id/remove_task', to: 'workers#remove_task'
