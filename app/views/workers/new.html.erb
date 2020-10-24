@@ -1,0 +1,7 @@
+    <h1><em>Create a New Worker:<em><h1>
+        <% if @worker %>
+            <% @worker.errors.full_messages.each do |m| %>
+                <%= m %>
+            <% end %>
+        <% end %>
+        <ul><%= render partial: '/workers/form' %></ul>

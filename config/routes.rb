@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :workers, only: [:show, :edit]
+    resources :workers, only: [:show, :edit, :new]
     resources :projects, only: [:show, :edit]
   end
   resources :workers

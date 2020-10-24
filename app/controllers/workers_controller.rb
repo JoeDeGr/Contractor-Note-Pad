@@ -1,9 +1,12 @@
 class WorkersController < ApplicationController
     before_action :this_worker
-    skip_before_action :this_worker, only: [:create]
+    skip_before_action :this_worker, only: [:new, :create]
     before_action :authorized_user
-    skip_before_action :authorized_user, only: [:create]
+    skip_before_action :authorized_user, only: [:new, :create]
    
+    def new
+    end
+
     def create
         @worker = Worker.new(worker_params)
         if @worker.valid?

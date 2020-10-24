@@ -33,21 +33,15 @@
             <% @user.workers.each do |w| %>
                 <li><h4><%= link_to "#{w.name}", user_worker_path(w.user, w.id) %></h4></li>
                 <ul>
-                    <%= link_to "Delete #{w.name}", w, :method => :delete, :data => {confirm: "Are you sure?"} %><br>
+                    <%= link_to "Edit #{w.name}", edit_user_worker_path(w.user, w.id) %><br>
                 </ul>
             <% end %>
         <% else %>
             <li><em>You do not have any workers.</em></li>
-        <% end %>
-
+        <% end %><br>
+        <li><em><%= link_to "Create a New Worker", new_user_worker_path(@user) %></em></li>
     </ul>
-    <div><em>Create a New Worker:<em><div>
-        <% if @worker %>
-            <% @worker.errors.full_messages.each do |m| %>
-                <%= m %>
-            <% end %>
-        <% end %>
-        <ul><%= render partial: '/workers/form' %></ul>
+
 
 </section>
 <%= link_to "Edit User", edit_user_path(@user) %><br><br>
