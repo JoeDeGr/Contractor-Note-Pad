@@ -31,7 +31,7 @@
     <ul> 
         <% if @user.workers.any? %>
             <% @user.workers.each do |w| %>
-                <li><h4><%= link_to "#{w.name}", user_worker_path(w.id) %></h4></li>
+                <li><h4><%= link_to "#{w.name}", user_worker_path(w.user, w.id) %></h4></li>
                 <ul>
                     <%= link_to "Delete #{w.name}", w, :method => :delete, :data => {confirm: "Are you sure?"} %><br>
                 </ul>

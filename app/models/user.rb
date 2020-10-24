@@ -5,7 +5,6 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     validates :password, presence: true
     validates :password, confirmation: { case_sensitive: true }
-    # validates :password_confirmation, presence: true
 
     has_many :projects
     has_many :punch_lists, through: :projects

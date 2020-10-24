@@ -17,21 +17,18 @@ class TasksController < ApplicationController
     end
 
     def show
-        @task = Task.find(params[:id])
         @punch_list = PunchList.find(@task.punch_list_id)
         @project = Project.find(@punch_list.project_id)
         @user = User.find(@project.user_id)
     end
 
     def edit
-        @task = Task.find(params[:id])
         @punch_list = PunchList.find(@task.punch_list_id)
         @project = Project.find(@punch_list.project_id)
         @user = User.find(@project.user_id)
     end
 
-    def update 
-        @task = Task.find(params[:id])
+    def update
         @worker = Worker.find(params[:task][:workers])
         @task.workers << @worker
         @task.save
@@ -39,7 +36,6 @@ class TasksController < ApplicationController
     end
 
     def destroy
-        @task = Task.find(params[:id])
         @punch_list = @task.punch_list
         @task.materials.each do |m|
             m.destroy
@@ -54,9 +50,6 @@ class TasksController < ApplicationController
         @task.workers.delete(@worker)
         redirect_to task_path(@task)
     end
-
-    
-
 
     private
 

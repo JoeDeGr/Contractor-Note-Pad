@@ -43,9 +43,11 @@ class PunchListsController < ApplicationController
     end
 
     private
+    
     def punch_list_params
         params.require(:punch_list).permit(:name, :project_id)
     end
+
     def this_list
         @punch_list = PunchList.find(params[:id])
     end

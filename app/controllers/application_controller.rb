@@ -12,6 +12,4 @@ private
     def current_user
         @user = (User.find(session[:user_id]) || User.new)
     end
-
-    
 end

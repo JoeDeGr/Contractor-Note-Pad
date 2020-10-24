@@ -15,15 +15,12 @@ class WorkersController < ApplicationController
     end
 
     def show
-        @worker = Worker.find(params[:id])
     end
 
     def edit
-        @worker = Worker.find(params[:id])
     end
 
     def update
-        @worker = Worker.find(params[:id])
         if params[:worker][:tasks]
             @task = Task.find(params[:worker][:tasks])
             @worker.tasks << @task    
@@ -34,14 +31,12 @@ class WorkersController < ApplicationController
     end
 
     def remove_task
-        @worker = Worker.find(params[:id])
         @task = Task.find(params[:task])
         @worker.tasks.delete(@task)   
         redirect_to worker_path(@worker)
     end 
 
     def destroy
-        @worker = Worker.find(params[:id])
         @worker.destroy
         redirect_to user_path(@user)
     end

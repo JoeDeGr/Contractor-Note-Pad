@@ -1,7 +1,6 @@
 <h1>Edit Page for <%= @worker.name %>.</h1>
 
 <P><%= render partial: "/workers/form" %></p><br>
-<%# <p><%= render partial: "/workers/add_tasks_to_worker" %>
 
 <%= link_to "DESTROY #{@worker.name}", @worker, :method => :delete, :data => {:confirm => "ANNIHALATE #{@worker.name} FOREVER!"} %><br><br>
 

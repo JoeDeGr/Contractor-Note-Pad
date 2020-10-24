@@ -1,6 +1,6 @@
 <%= form_tag tasks_path do %>
-<div> Name: <%= text_field_tag "task[name]", (@task.name if @task) %></div><br>
-<div>Description: <%= text_field_tag "task[description]", (@task.description if @task) || "Enter your description here." %></div><br>
-<%= hidden_field_tag "task[punch_list_id]", @punch_list.id %>
-<%= submit_tag %>
+    <div> Name: <%= text_field_tag "task[name]", (@task.name if @task) %></div><br>
+    <div>Description: <%= text_field_tag "task[description]", (@task.description if @task) || "Enter your description here." %></div><br>
+    <%= hidden_field_tag "task[punch_list_id]", @punch_list.id %>
+    <%= submit_tag %>
 <% end %>

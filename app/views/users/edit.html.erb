@@ -8,7 +8,7 @@
 <% end %>
 <%= form_for @user do %>
     <%= render partial: "/users/form" %>
-<%= submit_tag "Update User" %><br>
+    <%= submit_tag "Update User" %><br>
 <% end %>
 
 <%= link_to "Delete User", @user, :method => :delete, :data => {confirm: "Wait... Are you 100% sure? You will lose EVERYTHING. And it is unretrievable!"} %>
