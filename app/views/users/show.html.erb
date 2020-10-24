@@ -6,7 +6,7 @@
 
         <div > <% if @user.projects.any? %>
             <% @user.projects.each do |p| %>
-                <li> <%= link_to p.name, user_project_path(p.user, p.id) %></li><br>
+                <li> <%= link_to p.name, user_project_path(p.user, p) %></li><br>
             <% end %>
             <li>Or, Create a New Project</li>
         <%else%>
@@ -31,9 +31,9 @@
     <ul> 
         <% if @user.workers.any? %>
             <% @user.workers.each do |w| %>
-                <li><h4><%= link_to "#{w.name}", user_worker_path(w.user, w.id) %></h4></li>
+                <li><h4><%= link_to "#{w.name}", user_worker_path(w.user, w) %></h4></li>
                 <ul>
-                    <%= link_to "Edit #{w.name}", edit_user_worker_path(w.user, w.id) %><br>
+                    <%= link_to "Edit #{w.name}", edit_user_worker_path(w.user, w) %><br>
                 </ul>
             <% end %>
         <% else %>
