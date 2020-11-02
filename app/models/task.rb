@@ -4,6 +4,7 @@ class Task < ApplicationRecord
     has_many :materials
     has_many :worker_tasks
     has_many :workers, through: :worker_tasks
+    scope :complete, -> { where(completed: true) }
 
     def materials_total
         total = 0

@@ -5,6 +5,7 @@ class Project < ApplicationRecord
     has_many :punch_lists
     has_many :tasks, through: :punch_lists
     has_many :materials, through: :tasks
+    scope :complete, -> { where(completed: true) }
 
     def materials_total
         total = 0
