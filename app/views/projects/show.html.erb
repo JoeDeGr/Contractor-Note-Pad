@@ -1,5 +1,7 @@
 <h1><%= @project.name %></h1>
-<div>Materials Total for this project: <%=@project.materials_total%></div>
+<div><strong>Description: </strong> <%=@project.description%></div><br>
+<div><strong>Materials total for this project:</strong> <%=@project.materials_total%></div><br>
+<div><strong>Punch Lists for this project:</Strong></div>
 <ul>
     <% if @project.punch_lists.any? %>
         <% @project.punch_lists.each do |list|%>
@@ -10,8 +12,9 @@
             </ul>
         <% end %>    
     <% else %>
-        <H3>You dont have any Punch Lists for this Project yet!</h3>
+<p><strong><em>You dont have any Punch Lists for this Project yet!</em></strong></p>
     <% end %>
+    <li><em>Create a new Punch List:</em></li><br>
         <% if @punch_list %>
             <% @punch_list.errors.full_messages.each do |msg| %>
                 <div class="error_messages"> 
@@ -20,7 +23,7 @@
             <% end %>
         <% end %>
         <%= form_tag punch_lists_path do %>
-            <li><%= render partial: '/punch_lists/form' %></li>
+            <div><%= render partial: '/punch_lists/form' %></div>
         <% end %>   
 </ul>
 

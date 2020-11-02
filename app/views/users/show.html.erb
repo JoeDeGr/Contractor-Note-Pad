@@ -6,9 +6,12 @@
 
         <div > <% if @user.projects.any? %>
             <% @user.projects.each do |p| %>
-                <li> <%= link_to p.name, user_project_path(p.user, p) %></li><br>
+                <li> <%= link_to p.name, user_project_path(p.user, p) %></li>
+                <ul>
+                    <p><strong>Description: </strong><%=p.description%></p>
+                </ul>
             <% end %>
-            <li>Or, Create a New Project</li>
+            <li>Or, <em>Create a New Project</em></li>
         <%else%>
             <li> You don't have any Projects, Would you like to create one?</li>
         <% end %>
