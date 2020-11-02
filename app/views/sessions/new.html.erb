@@ -1,9 +1,9 @@
 <h1>Log in!</h1>
-
+<p> Please enter your Name or E-mail and your Password below to login:</p> 
 <%=form_tag sessions_path do %>
-    <li>Name: <%= text_field_tag "user[name]" %></li>
+    <div>Name: <%= text_field_tag "user[name]" %></div>
     <p>Or,</p>
-    <li>Email: <%= text_field_tag "user[email]" %></li>
-    <li>Password: <%= text_field_tag "user[password]" %></li>
-    <li><%=submit_tag "Log In"%>
+    <div>Email: <%= text_field_tag "user[email]" %></div><br>
+    <div>Password: <%= text_field_tag "user[password]" %></div><br>
+    <%=submit_tag "Log In"%>
 <%end%>
