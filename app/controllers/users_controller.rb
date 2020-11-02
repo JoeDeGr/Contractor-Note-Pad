@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @tasks = @user.tasks
     end
 
     def edit
@@ -51,6 +52,22 @@ class UsersController < ApplicationController
         end
         @user.destroy
         redirect_to root_path
+    end
+
+    def search_workers
+        @task = Task.find_by(name: params[:task])
+        if @task
+            if @task.user.id == session[:user_id]
+                @task_workers = User.search_for_task_workers(params[:task])
+        
+            else
+                flash[:notice] = "You are not authorized for this action. Please log back in and try again."
+                redirect_to 'session/destroy'
+            end
+        else
+            flash[:notice] = "Task not found."
+            redirect_to 'show'
+        end
     end
 
     private

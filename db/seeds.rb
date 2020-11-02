@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 @user = User.create(name: "Bob", email: "bob@bob.com", password: "password")
-@project = Project.create(name: "Joes Big Deal", user: @user)
+@project = Project.create(name: "Joes Big Deal", user: @user, description: "Bob's doing big things for Joe!")
 @punchlist = PunchList.create(name: "Bobs List", project: @project)
 @task = Task.create(name: "Do this thing, Bob!", punch_list: @punchlist)
 @worker = Worker.create(name: "Bob", user_id: @user.id)
 
 @user2 = User.create(name: "Joe", email: "Joe@Joe.com", password: "password")
-@project2 = Project.create(name: "Bobs Big Deal", user: @user2)
+@project2 = Project.create(name: "Bobs Big Deal", user: @user2, description: "Joe is doing big things for Bob!")
 @punchlist2 = PunchList.create(name: "Joes List", project: @project2)
 
 @task2 = Task.create(name: "Do this thing", punch_list: @punchlist2, description: "Go to this place, and do the things and stuff.")

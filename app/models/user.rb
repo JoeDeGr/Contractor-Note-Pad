@@ -10,4 +10,9 @@ class User < ApplicationRecord
     has_many :punch_lists, through: :projects
     has_many :tasks, through: :punch_lists
     has_many :workers
+
+    def self.search_for_task_workers(task_name)
+            task = Task.find_by(name: task_name)
+            task.workers
+    end
 end

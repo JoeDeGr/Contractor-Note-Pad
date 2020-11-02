@@ -1,0 +1,6 @@
+<h1>Workers assigned to Task Named: <%= @task.name %><h1>
+<ul>
+    <% @task_workers.each do |w|%>
+    <li><%= link_to "#{w.name}", w %></li>
+    <% end %>
+<ul>

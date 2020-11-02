@@ -4,16 +4,14 @@ Rails.application.routes.draw do
     resources :projects, only: [:show, :edit]
   end
   resources :workers
-  resources :materials
-  resources :tasks
-  resources :punch_lists
   resources :projects
-  resources :sessions
+
+  resources :materials, :tasks, :punch_lists,:sessions
   
   root 'sessions#index'
 
+  get 'search_tasks_for_workers', to: 'users#search_workers'
   get '/auth/facebook/callback', to: 'sessions#o_auth'
-
   post 'workers/:id', to: 'workers#update'
   post 'workers/:id/remove_task', to: 'workers#remove_task'
   post 'tasks/:id/remove_worker', to: 'tasks#remove_worker'
